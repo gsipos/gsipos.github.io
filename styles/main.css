@@ -1,0 +1,9 @@
+* {
+    color: #121212;
+    background-color: #e0e0e0;
+}
+
+header {
+    display: flex;
+    justify-content: center;    
+}
