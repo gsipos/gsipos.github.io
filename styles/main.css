@@ -53,6 +53,11 @@ body {
     height: 120px;
 }
 
+.strip.dominant {
+    min-height: 480px;
+    height: 70vh;
+}
+
 .strip .left, .strip .right {
     flex: 1 0 50%;
     display: flex;
@@ -87,12 +92,10 @@ img.logo {
     from {
         opacity: 0;
         transform: translateX(-10px);
-        
     }
     to {
         opacity: 1;
         transform: translateX(0px);
-        
     }
 }
 
@@ -106,4 +109,9 @@ img.logo {
 
 .anim-delay-3 {
     animation-delay: 0.9s;
+}
+
+.my-name {
+    font-size: 56px;
+    margin: 4px 0px 4px 0px;
 }
