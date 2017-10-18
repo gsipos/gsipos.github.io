@@ -115,3 +115,16 @@ img.logo {
     font-size: 56px;
     margin: 4px 0px 4px 0px;
 }
+
+.article-link {
+    padding-bottom: 24px;
+}
+
+.article-link a {
+    font-size: 28px;
+    color: #fffff2;
+}
+
+.talk-video {
+    padding: 16px;
+}
