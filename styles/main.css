@@ -128,3 +128,8 @@ img.logo {
 .talk-video {
     padding: 16px;
 }
+
+svg#tech-vis {
+    width: 100%;
+    height: 100%;
+}

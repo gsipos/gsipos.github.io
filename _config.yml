@@ -1,0 +1,1 @@
+exclude: [package.json, package-lock.json, tsconfig.json, src, node_modules, .gitignore, webpack.config.js]
