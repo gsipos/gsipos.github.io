@@ -45,7 +45,7 @@ body {
 }
 
 .strip.footer {
-    background: #121212;
+    background: #060606;
     height: 60px;
 }
 
@@ -55,7 +55,7 @@ body {
 
 .strip.dominant {
     min-height: 480px;
-    height: 70vh;
+    height: 50vh;
 }
 
 .strip .left, .strip .right {
@@ -120,7 +120,8 @@ img.logo {
     padding-bottom: 24px;
 }
 
-.article-link a {
+.article-link a,
+.repo a {
     font-size: 28px;
     color: #fffff2;
 }
@@ -132,4 +133,8 @@ img.logo {
 svg#tech-vis {
     width: 100%;
     height: 100%;
+}
+
+.repo {
+    padding-bottom: 24px;
 }

@@ -1,4 +1,30 @@
-export const profile = Object.freeze({
+export interface BlogPost {
+    title: string;
+    published: string;
+    link: string;
+}
+
+export interface Talk {
+    title: string;
+    date: string;
+    link: string;
+}
+
+export interface Tech {
+    name: string;
+    logo: string;
+    expertise: number;
+}
+export interface Profile {
+    name: string;
+    github: string;
+    blogs: BlogPost[];
+    talks: Talk[];
+    techLogoRoot: string;
+    tech: Tech[];
+}
+
+export const profile: Readonly<Profile> = Object.freeze({
     name: 'Gergely Sipos',
     currentJob: {
         title: "Frontend Architect",
@@ -34,28 +60,27 @@ export const profile = Object.freeze({
             link: "https://www.youtube.com/embed/NiV3evwl4yY"
         }
     ],
+    techLogoRoot: "assets/logos/",
     tech: [
-        { name: "TypeScript", logo: "logo", expertise: 100 },
-        { name: "JavaScript", logo: "logo", expertise: 90 },
-        { name: "Angular",    logo: "logo", expertise: 90 },
-        { name: "AngularJS",  logo: "logo", expertise: 90 },
-        { name: "React",      logo: "logo", expertise: 50 },
-        { name: "Node.js",    logo: "logo", expertise: 30 },
-        { name: "npm",        logo: "logo", expertise: 70 },
-        { name: "Java",       logo: "logo", expertise: 60 },
-        { name: "Webpack",    logo: "logo", expertise: 60 },
-        { name: "GCP",        logo: "logo", expertise: 60 },
-        { name: "App Engine", logo: "logo", expertise: 60 },
-
-        { name: "TypeScript", logo: "logo", expertise: 100 },
-        { name: "JavaScript", logo: "logo", expertise: 90 },
-        { name: "Angular", logo: "logo", expertise: 90 },
-        { name: "AngularJS", logo: "logo", expertise: 90 },
-        { name: "React", logo: "logo", expertise: 50 },
-        { name: "Node.js", logo: "logo", expertise: 30 },
-        { name: "npm", logo: "logo", expertise: 70 },
-        { name: "Java", logo: "logo", expertise: 60 },
-        { name: "Webpack", logo: "logo", expertise: 60 },
+        { name: "HTML", logo: "html.png", expertise: 100 },
+        { name: "CSS", logo: "css.png", expertise: 100 },
+        { name: "TypeScript", logo: "typescript.png", expertise: 100 },
+        { name: "JavaScript", logo: "javascript.png", expertise: 90 },
+        { name: "Angular",    logo: "angular.png", expertise: 90 },
+        { name: "AngularJS",  logo: "angularjs.svg", expertise: 90 },
+        { name: "React", logo: "react.svg", expertise: 50 },
+        { name: "RxJS", logo: "rxjs.png", expertise: 50 },
+        { name: "Node.js", logo: "nodejs.png", expertise: 30 },
+        { name: "Electron", logo: "electron.png", expertise: 10 },
+        { name: "npm",        logo: "npm.png", expertise: 70 },
+        { name: "Webpack",    logo: "webpack.png", expertise: 60 },
+        { name: "Java",       logo: "java_logo_icon.png", expertise: 60 },
+        { name: "GCP",        logo: "gcp.png", expertise: 60 },
+        { name: "App Engine", logo: "app-engine.png", expertise: 60 },
+        { name: "GCP Datastore", logo: "datastore-logo.png", expertise: 60 },
+        { name: "Firebase",    logo: "firebase.png", expertise: 30 },
+        { name: "VS Code", logo: "vs-code.jpg", expertise: 60 },
+        { name: "Github", logo: "github.png", expertise: 90 },
 
     ]
 })

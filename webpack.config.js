@@ -1,3 +1,5 @@
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
+
 module.exports = {
     entry: "./src/app.tsx",
     output: {
@@ -12,5 +14,7 @@ module.exports = {
             { test: /\.tsx?$/, loader: 'ts-loader' }
         ]
     },
-    
+    plugins: [
+        new UglifyJSPlugin()
+    ]
 }

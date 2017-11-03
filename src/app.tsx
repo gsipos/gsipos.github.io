@@ -3,6 +3,7 @@ import * as ReactDOM from 'react-dom'
 
 import { profile } from "./data/data.source"
 import { TechVisualization } from './tech-visualization/tech'
+import { HobbyProjects } from './hobby-projects'
 
 //import "./sample-d3/nFxyD.ts";
 
@@ -15,36 +16,6 @@ const MainIntroduction = () => (
             <div>Hello! I'm</div>
             <h1 className="my-name">{profile.name}</h1>
             <h3>Web Developer</h3>
-            <div>🚧 This site is under construction. 🚧</div>
-        </div>
-    </div>
-)
-
-const Expertise = () => (
-    <div className="strip">
-        <div className="left fadeIn anim-delay-2">
-            <h1>My expertise</h1>
-            <div className="description">
-                I love mastering new technologies.
-                    Currently my focus is on the Javascript ecosystem.
-                    Coding is my passion.
-                </div>
-        </div>
-        <div className="right fadeIn anim-delay-3">
-            <div className="flex">
-                <img className="logo" src="assets/logos/typescript.png" alt="Typescript" />
-                <img className="logo" src="assets/logos/javascript.png" alt="Javascript" />
-                <img className="logo" src="assets/logos/Java_logo_icon.png" alt="Java" />
-            </div>
-            <div className="flex">
-                <img className="logo" src="assets/logos/angular.png" alt="Angular 2+" />
-                <img className="logo" src="assets/logos/vs-code.png" alt="VS Code" />
-                <img className="logo" src="assets/logos/nodejs.png" alt="NodeJS" />
-            </div>
-            <div className="flex">
-                <img className="logo" src="assets/logos/gcp.png" alt="Google Cloud Platform" />
-                <img className="logo" src="assets/logos/app-engine.png" alt="Google App Engine" />
-            </div>
         </div>
     </div>
 )
@@ -82,10 +53,10 @@ const Talks = () => (
 const App = () => (
     <div className="content">
         <MainIntroduction />
-        <Expertise />
         <TechVisualization />
         <Blogs />
         <Talks />
+        <HobbyProjects />
         <div className="strip footer">@2017 by Gergely Sipos</div>
     </div>
 )
