@@ -33,6 +33,30 @@ export interface Profile {
 
 }
 
+const techs: Tech[] = [
+    { name: "HTML", logo: "html.png", expertise: 100 },
+    { name: "CSS", logo: "css.png", expertise: 100 },
+    { name: "TypeScript", logo: "typescript.png", expertise: 100 },
+    { name: "JavaScript", logo: "javascript.png", expertise: 90 },
+    { name: "Angular", logo: "angular.png", expertise: 90 },
+    { name: "AngularJS", logo: "angularjs.svg", expertise: 90 },
+    { name: "React", logo: "react.svg", expertise: 50 },
+    { name: "RxJS", logo: "rxjs.png", expertise: 50 },
+    { name: "Node.js", logo: "nodejs.png", expertise: 30 },
+    { name: "Electron", logo: "electron.png", expertise: 10 },
+    { name: "npm", logo: "npm.png", expertise: 70 },
+    { name: "Webpack", logo: "webpack.png", expertise: 60 },
+    { name: "Java", logo: "java_logo.png", expertise: 60 },
+    { name: "GCP", logo: "gcp.png", expertise: 60 },
+    { name: "App Engine", logo: "app-engine.png", expertise: 60 },
+    { name: "GCP Datastore", logo: "datastore-logo.png", expertise: 60 },
+    { name: "Firebase", logo: "firebase.png", expertise: 30 },
+    { name: "VS Code", logo: "vs-code.jpg", expertise: 60 },
+    { name: "Github", logo: "github.png", expertise: 90 },
+
+]
+techs.sort((a, b) => b.expertise - a.expertise);
+
 export const profile: Readonly<Profile> = Object.freeze({
     name: 'Gergely Sipos',
     currentJob: {
@@ -87,26 +111,5 @@ export const profile: Readonly<Profile> = Object.freeze({
         }
     ],
     techLogoRoot: "assets/logos/",
-    tech: [
-        { name: "HTML", logo: "html.png", expertise: 100 },
-        { name: "CSS", logo: "css.png", expertise: 100 },
-        { name: "TypeScript", logo: "typescript.png", expertise: 100 },
-        { name: "JavaScript", logo: "javascript.png", expertise: 90 },
-        { name: "Angular",    logo: "angular.png", expertise: 90 },
-        { name: "AngularJS",  logo: "angularjs.svg", expertise: 90 },
-        { name: "React", logo: "react.svg", expertise: 50 },
-        { name: "RxJS", logo: "rxjs.png", expertise: 50 },
-        { name: "Node.js", logo: "nodejs.png", expertise: 30 },
-        { name: "Electron", logo: "electron.png", expertise: 10 },
-        { name: "npm",        logo: "npm.png", expertise: 70 },
-        { name: "Webpack",    logo: "webpack.png", expertise: 60 },
-        { name: "Java",       logo: "java_logo.png", expertise: 60 },
-        { name: "GCP",        logo: "gcp.png", expertise: 60 },
-        { name: "App Engine", logo: "app-engine.png", expertise: 60 },
-        { name: "GCP Datastore", logo: "datastore-logo.png", expertise: 60 },
-        { name: "Firebase",    logo: "firebase.png", expertise: 30 },
-        { name: "VS Code", logo: "vs-code.jpg", expertise: 60 },
-        { name: "Github", logo: "github.png", expertise: 90 },
-
-    ]
+    tech: techs
 })
