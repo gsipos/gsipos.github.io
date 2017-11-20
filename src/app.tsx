@@ -72,13 +72,28 @@ const Talks = () => (
     </div>
 )
 
+
+const Techs = () => (
+    <div className="glass techs">
+        <h1>Technologies</h1>
+        <div className="tech-container">
+            {profile.tech.map(tech => (
+                <div className="tech">
+                    <img className="tech-logo" src={profile.techLogoRoot + tech.logo} />
+                    <div className="tech-name">{tech.name}</div>
+                </div>
+            ))}
+        </div>
+    </div>
+);
+
 const App = () => (
     <div className="content">
             <Introduction />
             <Blogs2 />
             <Talks />
             <HobbyProjects />
-            <TechVisualization />
+            <Techs />
     </div>
 )
 

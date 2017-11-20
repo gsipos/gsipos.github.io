@@ -71,7 +71,7 @@ export class TechVisualization extends React.Component {
 
     render() {
         return (
-            <div className="glass tech-container">
+            <div className="glass techs">
                 <h1>Skills</h1>    
                 <svg id="tech-vis"></svg>
             </div>    

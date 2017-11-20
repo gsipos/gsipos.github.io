@@ -29,7 +29,7 @@ export class HobbyProjects extends React.Component<{}, { repos: Repo[] }> {
             .sort((a, b) => a.size - b.size)
         return (
             <div className="glass projects">
-                <h1>My Hobby Projects</h1>
+                <h1>Hobby Projects</h1>
                 {myRepos.map(repo => (
                     <div className="repo" key={repo.id}>
                         <a href={repo.html_url} target="_blank">{repo.name}</a>
