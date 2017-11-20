@@ -100,7 +100,7 @@ export const profile: Readonly<Profile> = Object.freeze({
         { name: "Electron", logo: "electron.png", expertise: 10 },
         { name: "npm",        logo: "npm.png", expertise: 70 },
         { name: "Webpack",    logo: "webpack.png", expertise: 60 },
-        { name: "Java",       logo: "java_logo_icon.png", expertise: 60 },
+        { name: "Java",       logo: "java_logo.png", expertise: 60 },
         { name: "GCP",        logo: "gcp.png", expertise: 60 },
         { name: "App Engine", logo: "app-engine.png", expertise: 60 },
         { name: "GCP Datastore", logo: "datastore-logo.png", expertise: 60 },
