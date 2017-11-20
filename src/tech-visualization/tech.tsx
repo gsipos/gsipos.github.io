@@ -71,9 +71,10 @@ export class TechVisualization extends React.Component {
 
     render() {
         return (
-            <div className="strip">
+            <div className="glass tech-container">
+                <h1>Skills</h1>    
                 <svg id="tech-vis"></svg>
-            </div>
+            </div>    
         );
     }
 }

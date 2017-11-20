@@ -7,12 +7,15 @@
 }
 
 body {
-    color: #fffff2;
+    color: #fbe4d8;
     width: 100vw;
     height: 100vh;
     margin: 0;
-    background: linear-gradient(to top right, #121212, #500000);
     overflow: hidden;
+    background: url("/assets/budapest-nightjpeg.jpeg"); 
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 
 .content {
@@ -20,58 +23,45 @@ body {
     height: 100%;
     overflow-y: auto;
     overflow-x: hidden;
+    background: inherit;
+
+    display: flex;
+    flex-flow: row wrap;
+    padding: 32px;
+
+    align-items: flex-start;
 }
 
 .profile-pic {
-    width: 400px;
-    height: 400px;
+    width: 200px;
+    height: 200px;
 }
 
 .flex {
     display: flex;
 }
 
-.strip {
-    display: flex;
-    flex-flow: row nowrap;
-    height: 480px;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
+div.glass {
+    background: inherit;
+    position: relative;
+    overflow: hidden;
+    margin: 16px;
+    border-radius: 4px;
+    z-index: 1;
+    box-shadow: 0px 0px 20px 8px #00000042
 }
 
-.strip:nth-child(even) {
-    background: linear-gradient(to top right, #060606, #121212);
-}
-
-.strip.footer {
-    background: #060606;
-    height: 60px;
-}
-
-.strip.narrow {
-    height: 120px;
-}
-
-.strip.dominant {
-    min-height: 480px;
-    height: 50vh;
-}
-
-.strip .left, .strip .right {
-    flex: 1 0 50%;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    padding: 16px;
-}
-
-.strip .left {
-    align-items: flex-end;
-}
-
-.strip .right {
-    align-items: flex-start;
+div.glass::before {
+    content: "";
+    background: inherit;
+    position: absolute;
+    left: -25px; 
+    right: -25px;
+    top: -25px; 
+    bottom: -25px;
+    box-shadow: inset 0 0 0 500px rgba(255,255,255,0.3);
+    filter: blur(10px);
+    z-index: -1;
 }
 
 img.logo {
@@ -112,7 +102,7 @@ img.logo {
 }
 
 .my-name {
-    font-size: 56px;
+    font-size: 48px;
     margin: 4px 0px 4px 0px;
 }
 
@@ -137,4 +127,47 @@ svg#tech-vis {
 
 .repo {
     padding-bottom: 24px;
+    width: 100%;
+}
+
+.introduction {
+    grid-area: introduction;
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 8px;
+    align-items: center;
+}
+
+.blogs {
+    grid-area: blogs;
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 8px;
+    align-items: center;
+}
+
+.projects {
+    grid-area: projects;
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 8px;
+    align-items: center;
+}
+
+.talks {
+    grid-area: talks;
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 8px;
+    align-items: center;
+}
+
+.techs {
+    grid-area: techs;
+    min-width: 600px;
+    min-height: 600px;
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 8px;
+    align-items: center;
 }

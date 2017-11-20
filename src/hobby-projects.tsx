@@ -11,6 +11,7 @@ interface Repo {
     size: number;
 }
 
+const filterOutForks = (repos: Repo[]) => repos.filter(r => !r.fork);
 
 export class HobbyProjects extends React.Component<{}, { repos: Repo[] }> {
 
@@ -19,43 +20,22 @@ export class HobbyProjects extends React.Component<{}, { repos: Repo[] }> {
         this.state = { repos: [] };
         fetch("https://api.github.com/users/gsipos/repos")
             .then(res => res.json())
+            .then(filterOutForks)
             .then(repos => this.setState({ repos }))
     }
 
     render() {
         const myRepos = this.state.repos
             .sort((a, b) => a.size - b.size)
-            .filter(r => !r.fork)
-        const contributions = this.state.repos
-            .filter(repo => repo.fork)
         return (
-            <div>
-                <div className="strip projects">
-                    <div className="left">
-                        <h1>My Hobby Projects</h1>
+            <div className="glass projects">
+                <h1>My Hobby Projects</h1>
+                {myRepos.map(repo => (
+                    <div className="repo" key={repo.id}>
+                        <a href={repo.html_url} target="_blank">{repo.name}</a>
+                        <div>{repo.description}</div>
                     </div>
-                    <div className="right">
-                        {myRepos.map(repo => (
-                            <div className="repo" key={repo.id}>
-                                <a href={repo.html_url} target="_blank">{repo.name}</a>
-                                <div>{repo.description}</div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-                <div className="strip projects">
-                    <div className="left">
-                        <h1>Forks</h1>
-                    </div>
-                    <div className="right">
-                        {contributions.map(repo => (
-                            <div className="repo" key={repo.id}>
-                                <a href={repo.html_url} target="_blank">{repo.name}</a>
-                                <div>{repo.description}</div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
+                ))}
             </div>
         )
     }
