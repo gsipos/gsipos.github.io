@@ -52,7 +52,7 @@ export const profile: Readonly<Profile> = Object.freeze({
         {
             title: "Angular 2+ components with RxJS",
             date: "2017-10-10",
-            link: "https://www.youtube.com/embed/hZWjQaD0BN0?start=27010"
+            link: "https://www.youtube.com/embed/7q_63b5m_vM"
         },
         {
             title: "Angular 2.0. vs. React",
