@@ -1,5 +1,4 @@
 import * as React from 'react'
-import * as d3 from 'd3'
 import { profile } from "./data/data.source"
 
 interface Repo {

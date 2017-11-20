@@ -35,9 +35,46 @@ body {
     grid-template-columns: 1fr 1fr auto;
     grid-template-areas: 
     "introduction blogs talks"
-    "projects techs talks";
+    "projects     techs talks";
     grid-gap: 32px;
 }
+
+@media (max-width: 1450px) { 
+    .content {
+        grid-template-rows: auto auto auto auto;
+        grid-template-columns: 1fr auto;
+        grid-template-areas: 
+        "introduction talks"
+        "blogs        talks"
+        "projects     talks"
+        "techs        techs";
+    }
+ }
+
+@media (max-width: 1070px) { 
+    .content {
+        grid-template-rows: auto auto auto auto;
+        grid-template-columns: auto auto;
+        grid-template-areas: 
+        "introduction introduction"
+        "blogs        projects"
+        "talks        talks"
+        "techs        techs";
+    }
+ }
+
+ @media (max-width: 780px) { 
+    .content {
+        grid-template-rows: auto auto auto auto auto;
+        grid-template-columns: auto;
+        grid-template-areas: 
+        "introduction"
+        "blogs"
+        "projects"
+        "talks"
+        "techs";
+    }
+ }
 
 .profile-pic {
     width: 200px;
@@ -192,4 +229,17 @@ svg#tech-vis {
 .tech-logo {
     max-height: 50px;
     margin-right: 16px;
+}
+
+.contacts {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+}
+
+.contacts img {
+    height: 32px;
+    width: 32px;
+    margin-left: 8px;
+    margin-right: 8px;
 }

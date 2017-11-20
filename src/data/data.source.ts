@@ -15,6 +15,13 @@ export interface Tech {
     logo: string;
     expertise: number;
 }
+
+export interface Contact {
+    name: string;
+    url: string;
+    logo: string;
+}
+
 export interface Profile {
     name: string;
     github: string;
@@ -22,6 +29,8 @@ export interface Profile {
     talks: Talk[];
     techLogoRoot: string;
     tech: Tech[];
+    contacts: Contact[];
+
 }
 
 export const profile: Readonly<Profile> = Object.freeze({
@@ -31,6 +40,23 @@ export const profile: Readonly<Profile> = Object.freeze({
         company: "Doctusoft"
     },
     github: "gsipos",
+    contacts: [
+        {
+            name: "Stackoverflow",
+            logo: "stackoverflow-icon.svg",
+            url: "https://stackoverflow.com/users/6922682/gergely-sipos"
+        },
+        {
+            name: "github",
+            logo: "github.png",
+            url: "https://github.com/gsipos"
+        },
+        {
+            name: "LinkedIn", 
+            logo: "linkedin-logo.png",
+            url: "https://www.linkedin.com/in/gergelysipos/"
+        }
+    ],
     blogs: [
         {
             title: "Rate limiting in rxjs",

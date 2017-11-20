@@ -2,23 +2,7 @@ import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 
 import { profile } from "./data/data.source"
-import { TechVisualization } from './tech-visualization/tech'
 import { HobbyProjects } from './hobby-projects'
-
-//import "./sample-d3/nFxyD.ts";
-
-const MainIntroduction = () => (
-    <div className="strip dominant">
-        <div className="left fadeIn">
-            <img className="profile-pic fadeIn" src="assets/profile-pic.jpg"></img>
-        </div>
-        <div className="right fadeIn anim-delay-1">
-            <div>Hello! I'm</div>
-            <h1 className="my-name">{profile.name}</h1>
-            <h3>Web Developer</h3>
-        </div>
-    </div>
-)
 
 const Introduction = () => (
     <div className="glass introduction">
@@ -26,28 +10,19 @@ const Introduction = () => (
         <div>Hello! I'm</div>
         <h1 className="my-name">{profile.name}</h1>
         <h3>Web Developer</h3>
+        <div className="contacts">
+            {profile.contacts.map(contact => (
+                <a href={contact.url} target="_blank">
+                    <img src={profile.techLogoRoot + contact.logo} alt={contact.name} />
+                </a>
+            ))}
+        </div>
     </div>
 );
 
 const Blogs = () => (
-    <div className="strip">
-        <div className="left">
-            <h1>My posts</h1>
-        </div>
-        <div className="right">
-            {profile.blogs.map(post => (
-                <div className="article-link">
-                    <div>{post.published}</div>
-                    <a href={post.link} target="_blank">{post.title}</a>
-                </div>
-            ))}
-        </div>
-    </div>
-)
-
-const Blogs2 = () => (
     <div className="glass blogs">
-        <h1>My posts</h1>
+        <h1>Posts</h1>
         {profile.blogs.map(post => (
             <div className="article-link">
                 <div>{post.published}</div>
@@ -90,7 +65,7 @@ const Techs = () => (
 const App = () => (
     <div className="content">
             <Introduction />
-            <Blogs2 />
+            <Blogs />
             <Talks />
             <HobbyProjects />
             <Techs />
