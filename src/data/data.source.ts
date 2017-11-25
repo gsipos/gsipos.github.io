@@ -8,6 +8,8 @@ export interface Talk {
     title: string;
     date: string;
     link: string;
+    event: string;
+    slides?: string;
 }
 
 export interface Tech {
@@ -76,7 +78,7 @@ export const profile: Readonly<Profile> = Object.freeze({
             url: "https://github.com/gsipos"
         },
         {
-            name: "LinkedIn", 
+            name: "LinkedIn",
             logo: "linkedin-logo.png",
             url: "https://www.linkedin.com/in/gergelysipos/"
         }
@@ -101,12 +103,21 @@ export const profile: Readonly<Profile> = Object.freeze({
     talks: [
         {
             title: "Angular 2+ components with RxJS",
+            date: "2017-11-25",
+            link: "",
+            event: "DevFest Vienna 2017",
+            slides: "https://docs.google.com/presentation/d/1hQZuH4WBUEPxZ2QVxIU722XESJ3XOkjEjjwB9gTmZeA/edit?usp=sharing"
+        },
+        {
+            title: "Angular 2+ components with RxJS",
             date: "2017-10-10",
+            event: "DevFest Budapest 2017",
             link: "https://www.youtube.com/embed/7q_63b5m_vM"
         },
         {
             title: "Angular 2.0. vs. React",
             date: "2017-02-23",
+            event: "GDG Budapest meetup",
             link: "https://www.youtube.com/embed/NiV3evwl4yY"
         }
     ],

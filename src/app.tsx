@@ -34,14 +34,15 @@ const Blogs = () => (
 
 const Talks = () => (
     <div className="glass talks">
-        <h1>Talks</h1>    
+        <h1>Talks</h1>
         {profile.talks.map(talk => (
             <div className="talk-video">
                 <h3>{talk.title}</h3>
                 {// frameborder="0" allowfullscreen
                 }
-                <iframe width="560" height="315" src={talk.link} />
-                <div>{talk.date}</div>
+                {talk.link && <iframe width="560" height="315" src={talk.link} />}
+                <div>{talk.date} @ {talk.event}</div>
+                {talk.slides && <a href={talk.slides} target="_blank">Slides</a>}
             </div>
         ))}
     </div>
