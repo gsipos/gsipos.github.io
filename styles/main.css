@@ -1,4 +1,4 @@
-/* 
+/*
  * https://coolors.co/fffff2-351431-775253-bdc696-de6449
  */
 
@@ -14,7 +14,7 @@ body {
     overflow: hidden;
     overflow-y: auto;
     background-color: #343141;
-    background: url("/assets/budapest-night.jpeg"); 
+    background: url("/assets/budapest-night.jpeg");
     background-size: cover;
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -29,22 +29,22 @@ body {
     flex-flow: row wrap;
     padding: 32px;
 
-    align-items: flex-start;
+    align-items: stretch;
 
     display: grid;
     grid-template-rows: auto auto;
     grid-template-columns: 1fr 1fr auto;
-    grid-template-areas: 
+    grid-template-areas:
     "introduction blogs talks"
     "projects     techs talks";
     grid-gap: 32px;
 }
 
-@media (max-width: 1450px) { 
+@media (max-width: 1450px) {
     .content {
         grid-template-rows: auto auto auto auto;
         grid-template-columns: 1fr auto;
-        grid-template-areas: 
+        grid-template-areas:
         "introduction talks"
         "blogs        talks"
         "projects     talks"
@@ -52,11 +52,11 @@ body {
     }
  }
 
-@media (max-width: 1070px) { 
+@media (max-width: 1070px) {
     .content {
         grid-template-rows: auto auto auto auto;
         grid-template-columns: auto auto;
-        grid-template-areas: 
+        grid-template-areas:
         "introduction introduction"
         "blogs        projects"
         "talks        talks"
@@ -64,11 +64,11 @@ body {
     }
  }
 
- @media (max-width: 780px) { 
+ @media (max-width: 780px) {
     .content {
         grid-template-rows: auto auto auto auto auto;
         grid-template-columns: auto;
-        grid-template-areas: 
+        grid-template-areas:
         "introduction"
         "blogs"
         "projects"
@@ -99,9 +99,9 @@ div.glass::before {
     content: "";
     background: inherit;
     position: absolute;
-    left: -25px; 
+    left: -25px;
     right: -25px;
-    top: -25px; 
+    top: -25px;
     bottom: -25px;
     box-shadow: inset 0 0 0 500px rgba(121,121,121,0.3);
     filter: blur(10px);
