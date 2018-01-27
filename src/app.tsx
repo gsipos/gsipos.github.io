@@ -5,9 +5,8 @@ import { profile } from "./data/data.source"
 import { HobbyProjects } from './hobby-projects'
 
 const Introduction = () => (
-    <div className="glass introduction">
+    <div className="glass introduction inverse-hover">
         <img className="profile-pic" src="assets/profile-pic.jpg"></img>
-        <div>Hello! I'm</div>
         <h1 className="my-name">{profile.name}</h1>
         <h3>Web Developer</h3>
         <div className="contacts">
@@ -25,8 +24,8 @@ const Blogs = () => (
         <h1>Posts</h1>
         {profile.blogs.map(post => (
             <div className="article-link">
-                <div>{post.published}</div>
                 <a href={post.link} target="_blank">{post.title}</a>
+                <div>{post.published}</div>
             </div>
         ))}
     </div>
