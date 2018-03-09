@@ -95,7 +95,7 @@ export const profile: Readonly<Profile> = Object.freeze({
             link: "https://medium.com/@doctusoft/a-word-on-typescript-d5390d926d90"
         },
         {
-            title: "A word on Typescript",
+            title: "Yo! Npm, bower pls, thx!",
             published: "2015-09-23",
             link: "https://medium.com/doctusoft-coding-style/yo-npm-bower-pls-thx-9ea28d78f47"
         }

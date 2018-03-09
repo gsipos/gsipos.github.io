@@ -8,13 +8,15 @@ const Introduction = () => (
     <div className="glass introduction inverse-hover">
         <img className="profile-pic" src="assets/profile-pic.jpg"></img>
         <h1 className="my-name">{profile.name}</h1>
-        <h3>Web Developer</h3>
-        <div className="contacts">
-            {profile.contacts.map(contact => (
-                <a href={contact.url} target="_blank">
-                    <img src={profile.techLogoRoot + contact.logo} alt={contact.name} />
-                </a>
-            ))}
+        <div className="contact-container">
+            <h3>Web Developer</h3>
+            <div className="contacts">
+                {profile.contacts.map(contact => (
+                    <a href={contact.url} target="_blank">
+                        <img src={profile.techLogoRoot + contact.logo} alt={contact.name} />
+                    </a>
+                ))}
+            </div>
         </div>
     </div>
 );
