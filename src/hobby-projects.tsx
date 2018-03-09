@@ -14,8 +14,8 @@ const filterOutForks = (repos: Repo[]) => repos.filter(r => !r.fork);
 
 export class HobbyProjects extends React.Component<{}, { repos: Repo[] }> {
 
-    constructor() {
-        super();
+    constructor(props: {}) {
+        super(props);
         this.state = { repos: [] };
         fetch("https://api.github.com/users/gsipos/repos")
             .then(res => res.json())
