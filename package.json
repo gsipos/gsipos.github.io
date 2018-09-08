@@ -2,11 +2,11 @@
   "name": "gsipos.github.io",
   "version": "1.0.0",
   "scripts": {
-    "webpack": "webpack --mode production",
-    "watch:webpack": "webpack --watch --mode development",
-    "watch:serve": "lite-server",
-    "start": "run-p watch:*",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "watch:js": "parcel watch src/app.tsx",
+    "clean": "rimraf dist",
+    "start": "parcel index.html",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "parcel": "parcel build src/app.tsx"
   },
   "repository": {
     "type": "git",
@@ -16,18 +16,17 @@
   "license": "ISC",
   "private": true,
   "devDependencies": {
-    "lite-server": "^2.3.0",
-    "npm-run-all": "^4.1.2",
-    "ts-loader": "^4.0.1",
-    "typescript": "^2.7.2",
-    "uglifyjs-webpack-plugin": "^1.2.2",
-    "webpack": "^4.1.1",
-    "webpack-cli": "^2.0.10"
+    "npm-run-all": "^4.1.3",
+    "parcel": "^1.9.7",
+    "rimraf": "^2.6.2",
+    "typescript": "^3.0.3"
   },
   "dependencies": {
-    "@types/react": "^16.0.40",
-    "@types/react-dom": "^16.0.4",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "@types/react": "^16.4.13",
+    "@types/react-dom": "^16.0.7",
+    "@types/styled-components": "^3.0.0",
+    "react": "^16.5.0",
+    "react-dom": "^16.5.0",
+    "styled-components": "^3.4.5"
   }
 }
