@@ -6,7 +6,7 @@
     "clean": "rimraf dist",
     "start": "parcel index.html",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "parcel": "parcel build src/app.tsx"
+    "parcel": "parcel build src/app.tsx --public-url ./dist"
   },
   "repository": {
     "type": "git",
