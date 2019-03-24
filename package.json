@@ -5,7 +5,7 @@
     "clean": "rimraf dist",
     "start": "parcel src/index.html",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "parcel": "parcel build src/index.html"
+    "parcel": "parcel build src/index.html --public-url ./"
   },
   "repository": {
     "type": "git",
