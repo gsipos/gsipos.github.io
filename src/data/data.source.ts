@@ -14,8 +14,6 @@ export interface Talk {
 
 export interface Tech {
   name: string;
-  logo: string;
-  expertise: number;
 }
 
 export interface Contact {
@@ -36,50 +34,34 @@ export interface Profile {
 declare module "*.png";
 declare module "*.svg";
 
-import html from "../../assets/logos/html.png";
-import css from "../../assets/logos/css.png";
-import typescript from "../../assets/logos/typescript.png";
-import javascript from "../../assets/logos/javascript.png";
-import angular from "../../assets/logos/angular.png";
-import angularjs from "../../assets/logos/angularjs.svg";
-import reactLogo from "../../assets/logos/react.svg";
-import rxjs from "../../assets/logos/rxjs.png";
-import nodejs from "../../assets/logos/nodejs.png";
-import electron from "../../assets/logos/electron.png";
-import npm from "../../assets/logos/npm.png";
-import webpack from "../../assets/logos/webpack.png";
-import java from "../../assets/logos/java_logo.png";
-import gcp from "../../assets/logos/gcp.png";
-import appEngine from "../../assets/logos/app-engine.png";
-import datastore from "../../assets/logos/datastore-logo.png";
-import firebase from "../../assets/logos/firebase.png";
-import vscode from "../../assets/logos/vs-code.jpg";
 import github from "../../assets/logos/github.png";
 import stackoverflow from "../../assets/logos/stackoverflow-icon.svg";
 import linkedIn from "../../assets/logos/linkedin-logo.png";
 
 const techs: Tech[] = [
-  { name: "HTML", logo: html, expertise: 100 },
-  { name: "CSS", logo: css, expertise: 100 },
-  { name: "TypeScript", logo: typescript, expertise: 100 },
-  { name: "JavaScript", logo: javascript, expertise: 90 },
-  { name: "Angular", logo: angular, expertise: 90 },
-  { name: "AngularJS", logo: angularjs, expertise: 90 },
-  { name: "React", logo: reactLogo, expertise: 50 },
-  { name: "RxJS", logo: rxjs, expertise: 50 },
-  { name: "Node.js", logo: nodejs, expertise: 30 },
-  { name: "Electron", logo: electron, expertise: 10 },
-  { name: "npm", logo: npm, expertise: 70 },
-  { name: "Webpack", logo: webpack, expertise: 60 },
-  { name: "Java", logo: java, expertise: 60 },
-  { name: "GCP", logo: gcp, expertise: 60 },
-  { name: "App Engine", logo: appEngine, expertise: 60 },
-  { name: "GCP Datastore", logo: datastore, expertise: 60 },
-  { name: "Firebase", logo: firebase, expertise: 30 },
-  { name: "VS Code", logo: vscode, expertise: 60 },
-  { name: "Github", logo: github, expertise: 90 }
+  { name: "TypeScript" },
+  { name: "JavaScript" },
+  { name: "HTML" },
+  { name: "CSS" },
+  { name: "Java" },
+  { name: "Node.js" },
+  { name: "npm" },
+  { name: "React" },
+  { name: "MobX" },
+  { name: "styled-components" },
+  { name: "Angular" },
+  { name: "AngularJS" },
+  { name: "RxJS" },
+  { name: "Electron" },
+  { name: "Webpack" },
+  { name: "Parcel" },
+  { name: "Google Cloud Platform" },
+  { name: "Google App Engine" },
+  { name: "GCP Datastore" },
+  { name: "Firebase" },
+  { name: "VS Code" },
+  { name: "Github" }
 ];
-techs.sort((a, b) => b.expertise - a.expertise);
 
 export const profile: Readonly<Profile> = Object.freeze({
   name: "Gergely Sipos",

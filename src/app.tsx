@@ -2,10 +2,12 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 
 import { profile } from "./data/data.source";
-import styled, { injectGlobal } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 declare module "*.jpg";
+declare module "*.svg";
 import profilePic from "../assets/profile-pic.jpg";
+import bg from "../assets/bg1.svg";
 
 const color = {
   textPrimary: "#fcfcfc",
@@ -15,7 +17,7 @@ const color = {
 
 const fontFamily = "Montserrat, Consolas, Arial, Helvetica, sans-serif";
 
-injectGlobal`
+const GlobalStyle = createGlobalStyle`
     body {
         color: ${color.textPrimary};
         width: 100vw;
@@ -24,6 +26,8 @@ injectGlobal`
         overflow: hidden;
         overflow-y: auto;
         background-color: ${color.backgroundPrimary};
+        background-image: url(${bg});
+        background-size: cover;
         font-family: ${fontFamily};
     }
 `;
@@ -43,6 +47,9 @@ const SectionRoot = styled.div`
   overflow: hidden;
   border-radius: 0px;
   padding: 8px;
+  width: 100%;
+  max-width: 800px;
+  box-sizing: border-box;
 `;
 
 const SectionHeader = styled.h1`
@@ -68,14 +75,14 @@ const SectionAnchor = styled.a`
 `;
 
 const ProfilePic = styled.img`
-  width: 200px;
+  width: 240px;
   height: auto;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   border-bottom: 4px solid ${color.accent};
 `;
 
 const MyName = styled(SectionHeader)`
-  font-size: 48px;
+  font-size: 64px;
   padding: 4px 0px 4px 0px;
   width: 100%;
   margin-bottom: 0;
@@ -108,11 +115,8 @@ const Introduction = () => (
       <SectionSubHeader>Web Developer</SectionSubHeader>
       <Row>
         {profile.contacts.map(contact => (
-          <SectionAnchor href={contact.url} target="_blank">
-            <ContactImg
-              src={contact.logo}
-              alt={contact.name}
-            />
+          <SectionAnchor href={contact.url} target="_blank" rel="noopener">
+            <ContactImg src={contact.logo} alt={contact.name} />
           </SectionAnchor>
         ))}
       </Row>
@@ -179,18 +183,12 @@ const Talks = () => (
 );
 
 const Tech = styled.div`
-  flex: 1 0 150px;
+  flex: 0 1 150px;
   display: flex;
   flex-flow: column nowrap;
   align-items: flex-start;
   padding: 4px;
   padding-bottom: 16px;
-`;
-
-const TechLogo = styled.img`
-  max-height: 52px;
-  margin-right: 16px;
-  filter: grayscale();
 `;
 
 const TechRoot = styled(SectionRoot)`
@@ -202,10 +200,7 @@ const Techs = () => (
     <SectionHeader>Technologies</SectionHeader>
     <RowWrap>
       {profile.tech.map(tech => (
-        <Tech>
-          <TechLogo src={tech.logo} />
-          <div className="tech-name">{tech.name}</div>
-        </Tech>
+        <Tech>{tech.name}</Tech>
       ))}
     </RowWrap>
   </TechRoot>
@@ -264,55 +259,25 @@ const Content = styled.div`
   overflow-x: hidden;
   background: inherit;
 
-  display: flex;
-  flex-flow: row wrap;
-
-  align-items: stretch;
+  align-items: center;
+  justify-content: center;
 
   display: grid;
-  grid-template-rows: auto auto;
-  grid-template-columns: 1fr 1fr auto;
+  grid-template-rows: 100vh auto auto auto auto;
+  grid-template-columns: auto;
   grid-template-areas:
-    "introduction blogs    talks"
-    "introduction projects talks"
-    "introduction techs    techs";
-  grid-gap: 16px;
+    "introduction"
+    "blogs"
+    "projects"
+    "talks"
+    "techs";
+  grid-gap: 200px;
   padding: 16px;
-
-  @media (max-width: 1450px) {
-    grid-template-rows: auto auto auto auto;
-    grid-template-columns: 1fr auto;
-    grid-template-areas:
-      "introduction talks"
-      "blogs        talks"
-      "projects     talks"
-      "techs        techs";
-  }
-
-  @media (max-width: 1070px) {
-    grid-template-rows: auto auto auto auto;
-    grid-template-columns: auto auto;
-    grid-template-areas:
-      "introduction introduction"
-      "blogs        projects"
-      "talks        talks"
-      "techs        techs";
-  }
-
-  @media (max-width: 780px) {
-    grid-template-rows: auto auto auto auto auto;
-    grid-template-columns: auto;
-    grid-template-areas:
-      "introduction"
-      "blogs"
-      "projects"
-      "talks"
-      "techs";
-  }
 `;
 
 const App = () => (
   <Content>
+    <GlobalStyle />
     <Introduction />
     <Blogs />
     <Talks />
