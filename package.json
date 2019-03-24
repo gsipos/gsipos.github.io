@@ -2,11 +2,10 @@
   "name": "gsipos.github.io",
   "version": "1.0.0",
   "scripts": {
-    "watch:js": "parcel watch src/app.tsx",
     "clean": "rimraf dist",
-    "start": "parcel index.html",
+    "start": "parcel src/index.html",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "parcel": "parcel build src/app.tsx"
+    "parcel": "parcel build src/index.html"
   },
   "repository": {
     "type": "git",
