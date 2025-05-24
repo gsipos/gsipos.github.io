@@ -1,41 +1,24 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { ArrowRight } from "lucide-react";
+import { Button } from "../components/ui/button";
 ---
 
 <Layout>
-	<h1>Hello!</h1>
-	<nav>
-		<ul>
-			<li><a href="/tech">Technologies</a></li>
-		</ul>
-	</nav>
+	<div class="space-y-8">
+		<h1 class="text-4xl font-bold tracking-tight">Hello!</h1>
+		
+		<nav class="mt-8">
+			<ul class="flex gap-4">
+				<li>
+					<Button asChild client:load>
+						<a href="/tech" class="flex items-center gap-2 transition-transform hover:-translate-y-0.5">
+							Technologies
+							<ArrowRight className="h-4 w-4" />
+						</a>
+					</Button>
+				</li>
+			</ul>
+		</nav>
+	</div>
 </Layout>
-
-<style>
-	nav {
-		margin-top: 2rem;
-	}
-
-	ul {
-		list-style: none;
-		padding: 0;
-		display: flex;
-		gap: 1rem;
-	}
-
-	li a {
-		display: inline-block;
-		padding: 0.5rem 1rem;
-		background-color: #f0f0f0;
-		border-radius: 4px;
-		text-decoration: none;
-		color: #333;
-		font-weight: bold;
-		transition: background-color 0.2s, transform 0.2s;
-	}
-
-	li a:hover {
-		background-color: #e0e0e0;
-		transform: translateY(-2px);
-	}
-</style>

@@ -1,37 +1,55 @@
 ---
-import { Home, Code, FileText, Mic } from "@lucide/astro";
-import { cn } from "../lib/utils";
+import { Home, Code, FileText, Mic } from '@lucide/astro'
+import { cn } from '../lib/utils'
+import { ModeToggle } from './ModeToggle'
+import profilePic from '../assets/profile-pic.jpg'
+import { Image } from 'astro:assets'
 ---
 
 <nav class="bg-background border-b border-border sticky top-0 z-40">
   <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-    <a href="/" class="text-xl font-bold text-primary hover:text-primary/90 transition-colors">GS</a>
-    
+    <a href="/" class="text-xl font-bold text-primary hover:text-primary/90 transition-colors">
+      <Image src={profilePic} class="rounded-full w-8 h-8 aspect-square" alt="Gergely Sipos" />
+    </a>
+
     <ul class="flex items-center gap-6">
       <li>
-        <a href="/" class="flex items-center gap-1.5 text-muted-foreground hover:text-foreground transition-colors font-medium">
+        <a
+          href="/"
+          class="flex items-center gap-1.5 text-muted-foreground hover:text-foreground transition-colors font-medium"
+        >
           <Home size={16} />
           <span>Home</span>
         </a>
       </li>
       <li>
-        <a href="/tech" class="flex items-center gap-1.5 text-muted-foreground hover:text-foreground transition-colors font-medium">
+        <a
+          href="/tech"
+          class="flex items-center gap-1.5 text-muted-foreground hover:text-foreground transition-colors font-medium"
+        >
           <Code size={16} />
           <span>Technologies</span>
         </a>
       </li>
       <li>
-        <a href="/blogs" class="flex items-center gap-1.5 text-muted-foreground hover:text-foreground transition-colors font-medium">
+        <a
+          href="/blogs"
+          class="flex items-center gap-1.5 text-muted-foreground hover:text-foreground transition-colors font-medium"
+        >
           <FileText size={16} />
           <span>Blog</span>
         </a>
       </li>
       <li>
-        <a href="/talks" class="flex items-center gap-1.5 text-muted-foreground hover:text-foreground transition-colors font-medium">
+        <a
+          href="/talks"
+          class="flex items-center gap-1.5 text-muted-foreground hover:text-foreground transition-colors font-medium"
+        >
           <Mic size={16} />
           <span>Talks</span>
         </a>
       </li>
     </ul>
+    <ModeToggle client:load />
   </div>
 </nav>
