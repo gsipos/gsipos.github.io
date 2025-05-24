@@ -1,0 +1,111 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import { Calendar, Award, Video, FileText, ArrowLeft, ExternalLink } from '@lucide/astro';
+
+export async function getStaticPaths() {
+  const talkEntries = await getCollection('talks');
+  return talkEntries.map(entry => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+// Format date
+const formattedDate = new Date(entry.data.date).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+---
+
+<Layout title={`${entry.data.title} | Gergely Sipos`}>
+  <div class="container mx-auto px-4 py-8 max-w-4xl">
+    <nav class="flex items-center mb-8">
+      <a href="/talks" class="inline-flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors group">
+        <ArrowLeft size={16} class="group-hover:-translate-x-0.5 transition-transform" />
+        <span>Back to all talks</span>
+      </a>
+    </nav>
+    
+    <article class="space-y-8">
+      <header class="space-y-6">
+        <h1 class="text-3xl md:text-4xl font-bold text-foreground leading-tight">{entry.data.title}</h1>
+        
+        <div class="bg-card border border-border rounded-lg overflow-hidden">
+          <div class="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-border">
+            <div class="p-5 flex items-start gap-3">
+              <Award size={20} class="text-primary mt-0.5" />
+              <div>
+                <p class="text-sm font-medium text-muted-foreground mb-1">Event</p>
+                <p class="text-foreground font-medium">{entry.data.event}</p>
+              </div>
+            </div>
+            <div class="p-5 flex items-start gap-3">
+              <Calendar size={20} class="text-primary mt-0.5" />
+              <div>
+                <p class="text-sm font-medium text-muted-foreground mb-1">Date</p>
+                <p class="text-foreground">{formattedDate}</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="px-5 py-3 bg-muted/50 border-t border-border flex flex-wrap gap-3">
+            {entry.data.videoLink && 
+              <span class="inline-flex items-center text-xs px-3 py-1 rounded-full bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300">
+                <Video size={14} class="mr-1" />
+                Video recording available
+              </span>
+            }
+            {entry.data.slides && 
+              <span class="inline-flex items-center text-xs px-3 py-1 rounded-full bg-green-50 text-green-700 dark:bg-green-900/30 dark:text-green-300">
+                <FileText size={14} class="mr-1" />
+                Slides available
+              </span>
+            }
+          </div>
+        </div>
+      </header>
+      
+      {entry.data.videoLink && (
+        <section>
+          <h2 class="text-2xl font-semibold mb-4 text-foreground flex items-center gap-2">
+            <Video size={20} class="text-primary" />
+            Video Recording
+          </h2>
+          <div class="relative pb-[56.25%] h-0 rounded-lg overflow-hidden shadow-md">
+            <iframe 
+              class="absolute top-0 left-0 w-full h-full rounded-lg"
+              src={entry.data.videoLink} 
+              title={entry.data.title}
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen>
+            </iframe>
+          </div>
+        </section>
+      )}
+      
+      {entry.data.slides && (
+        <section>
+          <h2 class="text-2xl font-semibold mb-4 text-foreground flex items-center gap-2">
+            <FileText size={20} class="text-primary" />
+            Presentation Slides
+          </h2>
+          <a href={entry.data.slides} target="_blank" rel="noopener noreferrer" 
+             class="inline-flex items-center px-4 py-2.5 rounded-md bg-primary/10 text-primary hover:bg-primary/20 transition-colors">
+            View Presentation Slides
+            <ExternalLink size={16} class="ml-2" />
+          </a>
+        </section>
+      )}
+      
+      <section class="prose prose-lg max-w-none dark:prose-invert prose-headings:text-foreground prose-a:text-primary">
+        <Content />
+      </section>
+    </article>
+  </div>
+</Layout>

@@ -1,0 +1,30 @@
+---
+import { cn } from '@/lib/utils'
+import * as icons from 'simple-icons'
+import type { SimpleIcon } from 'simple-icons'
+
+interface Props {
+  slug: string
+  class?: string
+  width: number
+  height: number
+}
+
+function capitalize(str: string) {
+  return `${str[0].toUpperCase()}${str.substring(1)}`
+}
+
+const { slug, class: className } = Astro.props
+
+const iconObj: SimpleIcon = icons[`si${capitalize(slug)}` as keyof typeof icons] as SimpleIcon
+---
+
+<div class={cn('*:fill-current', className)}>
+  <Fragment set:html={iconObj.svg} />
+</div>
+
+<style>
+  svg {
+    fill: currentColor;
+  }
+</style>

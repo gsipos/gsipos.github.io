@@ -1,6 +1,9 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import TechGrid from "../../components/TechGrid.astro";
+import { getCollection } from "astro:content";
+import TechCard from "../../components/TechCard.astro";
+
+const techCollection = await getCollection("tech");
 ---
 
 <Layout>
@@ -8,7 +11,17 @@ import TechGrid from "../../components/TechGrid.astro";
     <h1>Technologies</h1>
     <p>These are the technologies I work with and have experience in:</p>
     
-    <TechGrid />
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 my-8">
+  {
+    techCollection.map((tech) => (
+      <TechCard 
+        name={tech.data.name} 
+        description={tech.data.description}
+        slug={tech.slug}
+      />
+    ))
+  }
+</div>
   </section>
 </Layout>
 

@@ -1,6 +1,5 @@
 ---
 import { Home, Code, FileText, Mic } from '@lucide/astro'
-import { cn } from '../lib/utils'
 import { ModeToggle } from './ModeToggle'
 import profilePic from '../assets/profile-pic.jpg'
 import { Image } from 'astro:assets'
@@ -49,7 +48,9 @@ import { Image } from 'astro:assets'
           <span>Talks</span>
         </a>
       </li>
+      <li>
+        <ModeToggle client:load />
+      </li>
     </ul>
-    <ModeToggle client:load />
   </div>
 </nav>

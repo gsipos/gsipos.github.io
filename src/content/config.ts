@@ -1,3 +1,4 @@
+import { file } from 'astro/loaders'
 import { defineCollection, z } from 'astro:content'
 
 const profile = defineCollection({
@@ -41,14 +42,13 @@ const blogs = defineCollection({
 })
 
 const contacts = defineCollection({
-  type: 'data',
-  schema: z.array(
-    z.object({
-      name: z.string(),
-      url: z.string(),
-      logo: z.string(),
-    }),
-  ),
+  loader: file('src/content/contacts/contacts.json'),
+  schema: ({ image }) => z.object({
+    name: z.string(),
+    url: z.string(),
+    logo: image().optional(),
+    simpleIcon: z.string().optional(),
+  }),
 })
 
 export const collections = {
