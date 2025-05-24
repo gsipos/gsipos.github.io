@@ -1,0 +1,33 @@
+---
+import { getCollection } from "astro:content";
+import TechCard from "./TechCard.astro";
+
+const techCollection = await getCollection("tech");
+---
+
+<div class="tech-grid">
+  {
+    techCollection.map((tech) => (
+      <TechCard 
+        name={tech.data.name} 
+        description={tech.data.description}
+        slug={tech.slug}
+      />
+    ))
+  }
+</div>
+
+<style>
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  @media (max-width: 768px) {
+    .tech-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

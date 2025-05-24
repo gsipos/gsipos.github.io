@@ -1,0 +1,30 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import TechGrid from "../../components/TechGrid.astro";
+---
+
+<Layout>
+  <section class="tech-section">
+    <h1>Technologies</h1>
+    <p>These are the technologies I work with and have experience in:</p>
+    
+    <TechGrid />
+  </section>
+</Layout>
+
+<style>
+  .tech-section {
+    padding: 2rem 0;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 2rem;
+  }
+</style>

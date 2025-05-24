@@ -1,0 +1,82 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const techEntries = await getCollection('tech');
+  return techEntries.map(entry => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<Layout>
+  <div class="tech-detail">
+    <a href="/tech" class="back-link">&larr; Back to Technologies</a>
+    
+    <h1>{entry.data.name}</h1>
+    
+    {entry.data.description && (
+      <div class="description">
+        <h2>Description</h2>
+        <p>{entry.data.description}</p>
+      </div>
+    )}
+    
+    <div class="content">
+      <Content />
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .tech-detail {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 0;
+  }
+  
+  .back-link {
+    display: inline-block;
+    margin-bottom: 2rem;
+    color: #555;
+    text-decoration: none;
+  }
+  
+  .back-link:hover {
+    text-decoration: underline;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+    margin: 1.5rem 0 0.5rem;
+    color: #444;
+  }
+  
+  .description, .personal-notes {
+    background-color: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  }
+  
+  .personal-notes {
+    background-color: #f0f7ff;
+  }
+  
+  .content {
+    line-height: 1.6;
+    color: #333;
+  }
+</style>

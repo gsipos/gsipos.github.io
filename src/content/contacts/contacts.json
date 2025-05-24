@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Stackoverflow",
+    "logo": "/assets/logos/stackoverflow-icon.svg",
+    "url": "https://stackoverflow.com/users/6922682/gergely-sipos"
+  },
+  {
+    "name": "github",
+    "logo": "/assets/logos/github.png",
+    "url": "https://github.com/gsipos"
+  },
+  {
+    "name": "LinkedIn",
+    "logo": "/assets/logos/linkedin-logo.png",
+    "url": "https://www.linkedin.com/in/gergelysipos/"
+  }
+]

@@ -1,0 +1,41 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+	<h1>Hello!</h1>
+	<nav>
+		<ul>
+			<li><a href="/tech">Technologies</a></li>
+		</ul>
+	</nav>
+</Layout>
+
+<style>
+	nav {
+		margin-top: 2rem;
+	}
+
+	ul {
+		list-style: none;
+		padding: 0;
+		display: flex;
+		gap: 1rem;
+	}
+
+	li a {
+		display: inline-block;
+		padding: 0.5rem 1rem;
+		background-color: #f0f0f0;
+		border-radius: 4px;
+		text-decoration: none;
+		color: #333;
+		font-weight: bold;
+		transition: background-color 0.2s, transform 0.2s;
+	}
+
+	li a:hover {
+		background-color: #e0e0e0;
+		transform: translateY(-2px);
+	}
+</style>
