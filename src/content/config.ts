@@ -18,6 +18,7 @@ const tech = defineCollection({
   schema: z.object({
     name: z.string(),
     description: z.string().optional(),
+    simpleIcon: z.string().optional(),
   }),
 })
 

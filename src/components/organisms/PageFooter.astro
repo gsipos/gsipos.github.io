@@ -21,7 +21,7 @@ const contactCollection = await getCollection('contacts')
               aria-label={c.data.name}
             >
               {c.data.simpleIcon ? (
-                <SimpleIcon slug={c.data.simpleIcon ?? ''} width={20} height={20} class="w-5 h-5" />
+                <SimpleIcon slug={c.data.simpleIcon ?? ''} class="w-5 h-5" />
               ) : null}
               {c.data.logo ? (
                 <Image src={c.data.logo} alt={c.data.name} width={20} height={20} class="w-5 h-5" />

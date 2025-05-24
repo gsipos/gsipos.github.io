@@ -1,6 +1,7 @@
 ---
 name: Webpack
 description: A static module bundler for modern JavaScript applications
+simpleIcon: webpack
 ---
 
 I've used Webpack extensively for bundling and optimizing web applications.

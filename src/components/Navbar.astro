@@ -7,8 +7,12 @@ import { Image } from 'astro:assets'
 
 <nav class="bg-background border-b border-border sticky top-0 z-40">
   <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-    <a href="/" class="text-xl font-bold text-primary hover:text-primary/90 transition-colors">
+    <a
+      href="/"
+      class="text-xl font-bold text-primary hover:text-primary/90 transition-colors flex flex-row gap-3 items-center"
+    >
       <Image src={profilePic} class="rounded-full w-8 h-8 aspect-square" alt="Gergely Sipos" />
+      <h2>Gergely Sipos</h2>
     </a>
 
     <ul class="flex items-center gap-6">
@@ -45,7 +49,7 @@ import { Image } from 'astro:assets'
           class="flex items-center gap-1.5 text-muted-foreground hover:text-foreground transition-colors font-medium"
         >
           <Mic size={16} />
-          <span>Talks</span>
+          <span>Public Speaking</span>
         </a>
       </li>
       <li>

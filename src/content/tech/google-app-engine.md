@@ -1,6 +1,7 @@
 ---
 name: Google App Engine
 description: A Platform-as-a-Service (PaaS) offering that lets you build and deploy applications on Google's infrastructure
+simpleIcon: googlecloud
 ---
 
 I've used Google App Engine for deploying and scaling web applications without managing infrastructure.

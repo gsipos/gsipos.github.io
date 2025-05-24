@@ -4,27 +4,31 @@ import * as icons from 'simple-icons'
 import type { SimpleIcon } from 'simple-icons'
 
 interface Props {
-  slug: string
+  slug: string | undefined
   class?: string
-  width: number
-  height: number
+  useIconBaseColor?: boolean
 }
 
 function capitalize(str: string) {
   return `${str[0].toUpperCase()}${str.substring(1)}`
 }
 
-const { slug, class: className } = Astro.props
+const { slug, class: className, useIconBaseColor } = Astro.props
 
-const iconObj: SimpleIcon = icons[`si${capitalize(slug)}` as keyof typeof icons] as SimpleIcon
+const iconObj: SimpleIcon | null = slug ? (icons[`si${capitalize(slug)}` as keyof typeof icons] as SimpleIcon) : null
+
+const fillColor = useIconBaseColor ? `#${iconObj?.hex || 'currentColor'}` : 'currentColor'
 ---
 
-<div class={cn('*:fill-current', className)}>
-  <Fragment set:html={iconObj.svg} />
-</div>
-
-<style>
-  svg {
-    fill: currentColor;
-  }
-</style>
+{
+  slug ? (
+    <div
+      class={cn('*:fill-current', className)}
+      style={{
+        color: useIconBaseColor ? fillColor : undefined,
+      }}
+    >
+      <Fragment set:html={iconObj?.svg} />
+    </div>
+  ) : null
+}

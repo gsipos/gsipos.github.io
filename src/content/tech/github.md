@@ -1,6 +1,7 @@
 ---
 name: Github
 description: A platform and cloud-based service for software development and version control using Git
+simpleIcon: github
 ---
 
 I find GitHub an essential tool for code collaboration and project management.

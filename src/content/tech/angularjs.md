@@ -1,6 +1,7 @@
 ---
 name: AngularJS
 description: The original JavaScript-based web application framework by Google
+simpleIcon: angular
 ---
 
 I worked with AngularJS before moving to Angular 2+.

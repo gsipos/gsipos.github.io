@@ -1,18 +1,24 @@
 ---
 import { cn } from "../lib/utils";
+import SimpleIcon from "./SimpleIcon.astro";
 
 interface Props {
   name: string;
   description?: string;
   slug: string;
+  simpleIcon?: string;
 }
 
-const { name, description, slug } = Astro.props;
+const { name, description, slug, simpleIcon } = Astro.props;
 ---
 
 <a href={`/tech/${slug}`} class="block group">
   <div class="h-full p-4 rounded-lg border border-border bg-card text-card-foreground shadow-sm transition-all hover:shadow-md hover:-translate-y-1">
-    <h3 class="text-lg font-semibold text-foreground mb-1">{name}</h3>
-    {description && <p class="text-sm text-muted-foreground">{description}</p>}
+    <div class="flex flex-row gap-2 items-baseline">
+      <SimpleIcon slug={simpleIcon} class="w-5 h-5 " useIconBaseColor />
+      <h3 class="text-lg font-semibold text-foreground mb-1">{name}</h3>
+
+    </div>
+    {description && <p class="text-sm text-muted-foreground text-balance">{description}</p>}
   </div>
 </a>
