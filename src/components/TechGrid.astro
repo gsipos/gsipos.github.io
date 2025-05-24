@@ -5,7 +5,7 @@ import TechCard from "./TechCard.astro";
 const techCollection = await getCollection("tech");
 ---
 
-<div class="tech-grid">
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 my-8">
   {
     techCollection.map((tech) => (
       <TechCard 
@@ -16,18 +16,3 @@ const techCollection = await getCollection("tech");
     ))
   }
 </div>
-
-<style>
-  .tech-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin: 2rem 0;
-  }
-
-  @media (max-width: 768px) {
-    .tech-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-</style>

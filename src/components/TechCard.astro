@@ -1,4 +1,6 @@
 ---
+import { cn } from "../lib/utils";
+
 interface Props {
   name: string;
   description?: string;
@@ -8,42 +10,9 @@ interface Props {
 const { name, description, slug } = Astro.props;
 ---
 
-<a href={`/tech/${slug}`} class="tech-card-link">
-  <div class="tech-card">
-    <h3>{name}</h3>
-    {description && <p>{description}</p>}
+<a href={`/tech/${slug}`} class="block group">
+  <div class="h-full p-4 rounded-lg border border-border bg-card text-card-foreground shadow-sm transition-all hover:shadow-md hover:-translate-y-1">
+    <h3 class="text-lg font-semibold text-foreground mb-1">{name}</h3>
+    {description && <p class="text-sm text-muted-foreground">{description}</p>}
   </div>
 </a>
-
-<style>
-  .tech-card-link {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-  }
-
-  .tech-card {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    background-color: #f9f9f9;
-    transition: transform 0.2s, box-shadow 0.2s;
-    height: 100%;
-  }
-
-  .tech-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  }
-
-  h3 {
-    margin-top: 0;
-    color: #333;
-  }
-
-  p {
-    color: #666;
-    margin-bottom: 0;
-  }
-</style>
