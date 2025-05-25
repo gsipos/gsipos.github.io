@@ -21,7 +21,7 @@ const { tech, header, subheader } = Astro.props
       <p class="text-lg text-muted-foreground mb-8">{subheader}</p>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 my-8">
         {(tech ?? []).map((t) => (
-          <TechCard name={t.data.name} description={t.data.description} slug={t.slug} simpleIcon={t.data.simpleIcon} />
+          <TechCard name={t.data.name} description={t.data.description} slug={t.slug} simpleIcon={t.data.simpleIcon} link={t.data.link} />
         ))}
       </div>
     </section>

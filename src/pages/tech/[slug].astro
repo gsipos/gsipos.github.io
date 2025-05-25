@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content'
 import Layout from '../../layouts/Layout.astro'
 import { ArrowLeft, ExternalLink } from '@lucide/astro'
 import SimpleIcon from '../../components/SimpleIcon.astro'
+import LinkPreviewImage from '@/components/LinkPreviewImage.astro'
 
 export async function getStaticPaths() {
   const techEntries = await getCollection('tech')
@@ -28,7 +29,9 @@ const { Content } = await entry.render()
       </a>
     </nav>
 
-    <article class="space-y-8">      <header class="space-y-6">        <div class="flex items-center gap-3">
+    <article class="space-y-8">
+      <header class="space-y-6">
+        <div class="flex items-center gap-3">
           {entry.data.simpleIcon && <SimpleIcon slug={entry.data.simpleIcon} class="w-8 h-8" useIconBaseColor />}
           <h1 class="text-3xl md:text-4xl font-bold text-foreground leading-tight">{entry.data.name}</h1>
         </div>
@@ -50,16 +53,17 @@ const { Content } = await entry.render()
                   <span class="inline-flex items-center text-xs px-3 py-1 rounded-full bg-yellow-50 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300">
                     Not recently used
                   </span>
-                )}                {entry.data.stack === 'legacy' && (
+                )}{' '}
+                {entry.data.stack === 'legacy' && (
                   <span class="inline-flex items-center text-xs px-3 py-1 rounded-full bg-gray-50 text-gray-700 dark:bg-gray-900/30 dark:text-gray-300">
                     Legacy
                   </span>
                 )}
                 {entry.data.link && (
-                  <a 
-                    href={entry.data.link} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
+                  <a
+                    href={entry.data.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     class="inline-flex items-center gap-1.5 text-xs px-3 py-1 rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
                   >
                     <ExternalLink size={12} />
@@ -72,6 +76,8 @@ const { Content } = await entry.render()
           {entry.data.description && <p class="text-muted-foreground">{entry.data.description}</p>}
         </div>
       </header>
+
+      {entry.data.link && <LinkPreviewImage url={entry.data.link} class="aspect-[16/9] object-cover" />}
 
       <section class="prose prose-lg max-w-none dark:prose-invert prose-headings:text-foreground prose-a:text-primary">
         <Content />
