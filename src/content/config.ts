@@ -19,7 +19,8 @@ const tech = defineCollection({
     name: z.string(),
     description: z.string().optional(),
     simpleIcon: z.string().optional(),
-    stack: z.enum(['active','recent', 'notRecent', 'legacy']).optional()
+    stack: z.enum(['active', 'recent', 'notRecent', 'legacy']).optional(),
+    link: z.string().optional(),
   }),
 })
 

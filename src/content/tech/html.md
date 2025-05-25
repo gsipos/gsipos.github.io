@@ -4,6 +4,7 @@ description: HyperText Markup Language, the standard markup language for documen
 personalNotes: The structural foundation of all web pages
 simpleIcon: html5
 stack: active
+link: https://developer.mozilla.org/en-US/docs/Web/HTML
 ---
 
 HTML provides the basic structure of sites, which is enhanced and modified by other technologies like CSS and JavaScript. It is the skeleton of all web pages and applications.

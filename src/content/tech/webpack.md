@@ -3,6 +3,7 @@ name: Webpack
 description: A static module bundler for modern JavaScript applications
 simpleIcon: webpack
 stack: notRecent
+link: https://webpack.js.org
 ---
 
 I've used Webpack extensively for bundling and optimizing web applications.

@@ -3,6 +3,7 @@ name: Firebase
 description: A platform developed by Google for creating mobile and web applications
 simpleIcon: firebase
 stack: active
+link: https://firebase.google.com
 ---
 
 I've used Firebase for rapid application development with ready-made backend services.

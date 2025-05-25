@@ -3,6 +3,7 @@ name: styled-components
 description: A CSS-in-JS library that allows you to write actual CSS in your JavaScript
 simpleIcon: styledcomponents
 stack: notRecent
+link: https://styled-components.com
 ---
 
 styled-components is my preferred styling solution for React applications.

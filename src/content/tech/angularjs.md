@@ -3,6 +3,7 @@ name: AngularJS
 description: The original JavaScript-based web application framework by Google
 simpleIcon: angular
 stack: legacy
+link: https://angularjs.org
 ---
 
 I worked with AngularJS before moving to Angular 2+.
