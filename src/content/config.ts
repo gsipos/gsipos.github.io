@@ -55,10 +55,24 @@ const contacts = defineCollection({
     }),
 })
 
+const workProjects = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    start: z.date(),
+    end: z.date().optional(),
+    projectLink: z.string().optional(),
+    customerName: z.string().optional(),
+    customerLink: z.string().optional(),
+    employer: z.string().optional(),
+  }),
+})
+
 export const collections = {
   talks,
   blogs,
   contacts,
   tech,
   profile,
+  workProjects,
 }
