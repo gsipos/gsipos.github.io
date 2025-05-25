@@ -1,5 +1,5 @@
 ---
-import { Home, Code, FileText, Mic } from '@lucide/astro'
+import { Home, Code, FileText, Mic, Briefcase } from '@lucide/astro'
 import { ModeToggle } from './ModeToggle'
 import profilePic from '../assets/profile-pic.jpg'
 import { Image } from 'astro:assets'
@@ -33,8 +33,7 @@ import { Image } from 'astro:assets'
           <Code size={16} />
           <span>Technologies</span>
         </a>
-      </li>
-      <li>
+      </li>      <li>
         <a
           href="/blogs"
           class="flex items-center gap-1.5 text-muted-foreground hover:text-foreground transition-colors font-medium"
@@ -49,7 +48,16 @@ import { Image } from 'astro:assets'
           class="flex items-center gap-1.5 text-muted-foreground hover:text-foreground transition-colors font-medium"
         >
           <Mic size={16} />
-          <span>Public Speaking</span>
+          <span>Talks</span>
+        </a>
+      </li>
+      <li>
+        <a
+          href="/projects"
+          class="flex items-center gap-1.5 text-muted-foreground hover:text-foreground transition-colors font-medium"
+        >
+          <Briefcase size={16} />
+          <span>Projects</span>
         </a>
       </li>
       <li>
