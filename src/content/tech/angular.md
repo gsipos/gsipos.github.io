@@ -2,6 +2,7 @@
 name: Angular
 description: A platform for building mobile and desktop web applications
 simpleIcon: angular
+stack: notRecent
 ---
 
 I've used Angular for building enterprise web applications and gave talks about it.

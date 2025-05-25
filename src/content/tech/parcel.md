@@ -1,6 +1,7 @@
 ---
 name: Parcel
 description: A blazing fast, zero configuration web application bundler
+stack: legacy
 ---
 
 I find Parcel great for quick prototyping and small projects.

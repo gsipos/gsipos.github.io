@@ -2,6 +2,7 @@
 name: GCP Datastore
 description: A NoSQL document database built for automatic scaling, high performance, and ease of application development
 simpleIcon: googlecloud
+stack: legacy
 ---
 
 I've used GCP Datastore for scalable data storage in cloud applications.

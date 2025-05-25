@@ -2,6 +2,7 @@
 name: RxJS
 description: A library for reactive programming using Observables
 simpleIcon: reactivex
+stack: notRecent
 ---
 
 I wrote an article about rate limiting in RxJS and use it extensively with Angular.

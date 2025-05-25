@@ -2,6 +2,7 @@
 name: Google Cloud Platform
 description: A suite of cloud computing services offered by Google
 simpleIcon: googlecloud
+stack: recent
 ---
 
 I've used Google Cloud Platform for a variety of cloud-based solutions and applications.

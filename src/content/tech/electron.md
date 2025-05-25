@@ -2,6 +2,7 @@
 name: Electron
 description: A framework for building cross-platform desktop applications with web technologies
 simpleIcon: electron
+stack: notRecent
 ---
 
 I've used Electron for creating desktop applications with web technologies.

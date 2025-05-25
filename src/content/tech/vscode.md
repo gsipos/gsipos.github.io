@@ -1,6 +1,7 @@
 ---
 name: VS Code
 description: A lightweight but powerful source code editor
+stack: active
 ---
 
 VS Code is my primary development environment for all projects.

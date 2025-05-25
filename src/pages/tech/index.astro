@@ -1,44 +1,44 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import { getCollection } from "astro:content";
-import TechCard from "../../components/TechCard.astro";
+import Layout from '../../layouts/Layout.astro'
+import { getCollection } from 'astro:content'
+import TechSection from '@/components/TechSection.astro'
+import { RocketIcon, ZapIcon, LayersIcon, ArchiveIcon, BoxIcon } from '@lucide/astro'
 
-const techCollection = await getCollection("tech");
+const techCollection = await getCollection('tech')
+
+const sortedTech = techCollection.toSorted((a, b) => {
+  return a.data.name.localeCompare(b.data.name)
+})
+
+const { active, recent, notRecent, legacy, other } = Object.groupBy(sortedTech, (t) => t.data.stack ?? 'other')
 ---
 
 <Layout>
-  <section class="tech-section">
-    <h1>Technologies</h1>
-    <p>These are the technologies I work with and have experience in:</p>
-    
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 my-8">
-  {
-    techCollection.map((tech) => (
-      <TechCard 
-        name={tech.data.name} 
-        description={tech.data.description}
-        slug={tech.slug}
-        simpleIcon={tech.data.simpleIcon}
-      />
-    ))
-  }
-</div>
-  </section>
+  <TechSection tech={active} header="Active tech stack" subheader="These are the technologies I actively work with" >
+    <RocketIcon slot="icon" />
+  </TechSection>
+
+  <TechSection tech={recent} header="Recently used" subheader="Technologies I have used recently" >
+    <ZapIcon slot="icon" />
+  </TechSection>
+
+  <TechSection
+    tech={notRecent}
+    header="Not used recently"
+    subheader="Technologies I have used in the past but not recently"
+  >
+    <LayersIcon slot="icon" />
+  </TechSection>
+
+  <TechSection
+    tech={legacy}
+    header="Legacy technologies"
+    subheader="Technologies I have used in the past and no longer use"
+  >
+    <ArchiveIcon slot="icon" />
+  </TechSection>
+
+  <TechSection tech={other} header="Other technologies" subheader="Other technologies I have experience with" >
+    <BoxIcon slot="icon" />
+  </TechSection>
 </Layout>
-
-<style>
-  .tech-section {
-    padding: 2rem 0;
-  }
-
-  h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-  }
-
-  p {
-    font-size: 1.1rem;
-    color: #555;
-    margin-bottom: 2rem;
-  }
-</style>
