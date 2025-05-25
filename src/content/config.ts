@@ -46,12 +46,13 @@ const blogs = defineCollection({
 
 const contacts = defineCollection({
   loader: file('src/content/contacts/contacts.json'),
-  schema: ({ image }) => z.object({
-    name: z.string(),
-    url: z.string(),
-    logo: image().optional(),
-    simpleIcon: z.string().optional(),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      name: z.string(),
+      url: z.string(),
+      logo: image().optional(),
+      simpleIcon: z.string().optional(),
+    }),
 })
 
 export const collections = {
