@@ -78,9 +78,10 @@ const contactCollection = await getCollection('contacts')
         <Image
           src={profilePic}
           alt={profile.name}
-          width={280}
-          height={280}
-          class="rounded-full aspect-square object-cover border-4 border-primary/10 shadow-lg"
+          width={320}
+          height={320}
+          class="rounded-full aspect-square object-cover border-4 border-primary/10 shadow-lg w-[280px] h-[280px]"
+          loading="eager"
         />
       </div>
     </div>
