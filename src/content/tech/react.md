@@ -3,7 +3,7 @@ name: React
 description: A JavaScript library for building user interfaces
 personalNotes: My preferred library for building modern web applications
 simpleIcon: react
-stack: active
+stack: core
 link: https://reactjs.org
 ---
 

@@ -3,7 +3,7 @@ name: JavaScript
 description: A lightweight, interpreted programming language with first-class functions
 personalNotes: The foundation of web development
 simpleIcon: javascript
-stack: active
+stack: core
 link: https://developer.mozilla.org/en-US/docs/Web/JavaScript
 ---
 

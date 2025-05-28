@@ -2,7 +2,7 @@
 name: Vite
 description: Next generation frontend tooling
 simpleIcon: vite
-stack: active
+stack: core
 link: https://vitejs.dev
 ---
 

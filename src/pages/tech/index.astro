@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro'
 import { getCollection } from 'astro:content'
 import TechSection from '@/components/TechSection.astro'
-import { RocketIcon, ZapIcon, LayersIcon, ArchiveIcon, BoxIcon } from '@lucide/astro'
+import { RocketIcon, ZapIcon, LayersIcon, ArchiveIcon, BoxIcon, CastleIcon } from '@lucide/astro'
 
 const techCollection = await getCollection('tech')
 
@@ -10,10 +10,14 @@ const sortedTech = techCollection.toSorted((a, b) => {
   return a.data.name.localeCompare(b.data.name)
 })
 
-const { active, recent, notRecent, legacy, other } = Object.groupBy(sortedTech, (t) => t.data.stack ?? 'other')
+const { core, active, recent, notRecent, legacy, other } = Object.groupBy(sortedTech, (t) => t.data.stack ?? 'other')
 ---
 
 <Layout>
+  <TechSection tech={core} header="Core tech stack" subheader="These are the technologies that form the foundation of my work" >
+    <CastleIcon slot="icon" />
+  </TechSection>
+
   <TechSection tech={active} header="Active tech stack" subheader="These are the technologies I actively work with" >
     <RocketIcon slot="icon" />
   </TechSection>

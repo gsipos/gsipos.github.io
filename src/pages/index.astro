@@ -23,10 +23,10 @@ const latestProjects = [...projects]
   .sort((a, b) => new Date(b.data.start).getTime() - new Date(a.data.start).getTime())
   .slice(0, 2)
 
-// Get active tech stack
+// Get core tech stack
 const techCollection = await getCollection('tech')
-const activeTech = techCollection
-  .filter((tech) => tech.data.stack === 'active')
+const coreTech = techCollection
+  .filter((tech) => tech.data.stack === 'core')
   .sort((a, b) => a.data.name.localeCompare(b.data.name))
   .slice(0, 6)
 
@@ -90,12 +90,12 @@ const contactCollection = await getCollection('contacts')
     <div class="mb-16">
       <div class="flex items-center gap-2 mb-6">
         <RocketIcon class="h-6 w-6 text-primary" />
-        <h2 class="text-2xl font-bold">Active Tech Stack</h2>
+        <h2 class="text-2xl font-bold">Core Tech Stack</h2>
       </div>
 
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-6 gap-4">
         {
-          activeTech.map((tech) => (
+          coreTech.map((tech) => (
             <a href={`/tech/${tech.slug}`} class="group">
               <div class="h-full p-4 rounded-lg border border-border bg-card hover:border-primary/50 hover:shadow-md transition-all flex flex-col items-center text-center">
                 {tech.data.simpleIcon && (
@@ -112,7 +112,7 @@ const contactCollection = await getCollection('contacts')
       </div>
 
       <div class="mt-4 flex justify-end">
-        <Button variant="outline" asChild size="sm" client:load>
+        <Button variant="outline" asChild size="sm">
           <a href="/tech" class="flex items-center gap-2">
             View all technologies
             <ArrowRight class="h-4 w-4" />
@@ -153,7 +153,7 @@ const contactCollection = await getCollection('contacts')
       </div>
 
       <div class="mt-4 flex justify-end">
-        <Button variant="outline" asChild size="sm" client:load>
+        <Button variant="outline" asChild size="sm">
           <a href="/talks" class="flex items-center gap-2">
             View all talks
             <ArrowRight class="h-4 w-4" />
@@ -213,7 +213,7 @@ const contactCollection = await getCollection('contacts')
       </div>
 
       <div class="mt-4 flex justify-end">
-        <Button variant="outline" asChild size="sm" client:load>
+        <Button variant="outline" asChild size="sm">
           <a href="/projects" class="flex items-center gap-2">
             View all projects
             <ArrowRight class="h-4 w-4" />
@@ -233,7 +233,7 @@ const contactCollection = await getCollection('contacts')
         <p class="text-lg text-muted-foreground mb-4">
           I occasionally write about web development, frontend architecture, and technologies I'm passionate about.
         </p>
-        <Button asChild client:load>
+        <Button asChild>
           <a
             href="https://medium.com/@doctusoft"
             target="_blank"
@@ -252,7 +252,7 @@ const contactCollection = await getCollection('contacts')
       <h2 class="text-xl font-semibold mb-4">Explore More</h2>
       <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         <li>
-          <Button asChild variant="outline" size="lg" className="w-full justify-start" client:load>
+          <Button asChild variant="outline" size="lg" className="w-full justify-start">
             <a href="/tech" class="flex items-center gap-3">
               <RocketIcon class="h-5 w-5" />
               <div class="text-left">
@@ -263,7 +263,7 @@ const contactCollection = await getCollection('contacts')
           </Button>
         </li>
         <li>
-          <Button asChild variant="outline" size="lg" className="w-full justify-start" client:load>
+          <Button asChild variant="outline" size="lg" className="w-full justify-start">
             <a href="/projects" class="flex items-center gap-3">
               <BriefcaseIcon class="h-5 w-5" />
               <div class="text-left">
@@ -274,7 +274,7 @@ const contactCollection = await getCollection('contacts')
           </Button>
         </li>
         <li>
-          <Button asChild variant="outline" size="lg" className="w-full justify-start" client:load>
+          <Button asChild variant="outline" size="lg" className="w-full justify-start">
             <a href="/talks" class="flex items-center gap-3">
               <MicIcon class="h-5 w-5" />
               <div class="text-left">

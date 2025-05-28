@@ -3,7 +3,7 @@ name: TypeScript
 description: A typed superset of JavaScript that compiles to plain JavaScript
 personalNotes: My go-to language for web development with great tooling support
 simpleIcon: typescript
-stack: active
+stack: core
 link: https://www.typescriptlang.org
 ---
 
