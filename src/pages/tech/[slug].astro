@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content'
 import Layout from '../../layouts/Layout.astro'
 import { ArrowLeft, ExternalLink } from '@lucide/astro'
 import SimpleIcon from '../../components/SimpleIcon.astro'
-import LinkPreviewImage from '@/components/LinkPreviewImage.astro'
+import LinkPreviewImage from '@/components/atoms/LinkPreviewImage.astro'
 
 export async function getStaticPaths() {
   const techEntries = await getCollection('tech')

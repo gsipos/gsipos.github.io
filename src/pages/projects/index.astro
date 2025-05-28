@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro'
 import { Briefcase, Calendar, Building2, Link as LinkIcon } from '@lucide/astro'
 import { getCollection } from 'astro:content'
-import LinkPreviewImage from '@/components/LinkPreviewImage.astro'
+import LinkPreviewImage from '@/components/atoms/LinkPreviewImage.astro'
 
 // Get all work projects sorted by start date in descending order (newest first)
 const projects = await getCollection('workProjects')
