@@ -1,0 +1,16 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import SimpleIcon from '../SimpleIcon.astro'
+import { badgeVariants } from '@/components/ui/badge'
+import { cn } from '@/lib/utils'
+
+interface Props {
+  tech: CollectionEntry<'tech'>
+}
+const { tech } = Astro.props
+---
+
+<a href={`/tech/${tech.slug}`} class={cn(badgeVariants({ variant: 'outline' }))}>
+  <SimpleIcon slug={tech.data.simpleIcon} class="w-3 h-3" useIconBaseColor />
+  <span>{tech.data.name}</span>
+</a>

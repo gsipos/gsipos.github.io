@@ -1,0 +1,35 @@
+---
+import { getCollection } from 'astro:content'
+import SimpleIcon from '../SimpleIcon.astro'
+import { Image } from 'astro:assets'
+
+const contactCollection = await getCollection('contacts')
+---
+
+<footer class="w-full py-8 mt-auto bg-muted/30 border-t border-border">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+      <div>
+        <p class="text-sm text-muted-foreground">© {new Date().getFullYear()} Gergely Sipos. All rights reserved.</p>
+      </div>
+      <div class="flex items-center gap-4">
+        {
+          contactCollection.map((c) => (
+            <a
+              href={c.data.url}
+              class="text-muted-foreground hover:text-foreground transition-colors"
+              aria-label={c.data.name}
+            >
+              {c.data.simpleIcon ? (
+                <SimpleIcon slug={c.data.simpleIcon ?? ''} class="w-5 h-5" />
+              ) : null}
+              {c.data.logo ? (
+                <Image src={c.data.logo} alt={c.data.name} width={20} height={20} class="w-5 h-5" />
+              ) : null}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</footer>

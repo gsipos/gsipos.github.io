@@ -1,0 +1,206 @@
+---
+import Layout from '../layouts/Layout.astro'
+import { ArrowRight, RocketIcon, MicIcon, FileTextIcon, BriefcaseIcon, CalendarIcon } from '@lucide/astro'
+import { Button } from '../components/ui/button'
+import { getCollection } from 'astro:content'
+import { Image } from 'astro:assets'
+import profilePic from '../assets/profile-pic.jpg'
+import SimpleIcon from '../components/SimpleIcon.astro'
+import TalkCard from '@/components/organisms/TalkCard.astro'
+
+// Get profile data
+const profileData = await getCollection('profile')
+const profile = profileData[0].data
+
+// Get latest talks
+const talks = await getCollection('talks')
+const latestTalks = [...talks]
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+  .slice(0, 2)
+
+// Get latest projects
+const projects = await getCollection('workProjects')
+const latestProjects = [...projects]
+  .sort((a, b) => new Date(b.data.start).getTime() - new Date(a.data.start).getTime())
+  .slice(0, 2)
+
+// Get core tech stack
+const techCollection = await getCollection('tech')
+const coreTech = techCollection
+  .filter((tech) => tech.data.stack === 'core')
+  .sort((a, b) => a.data.name.localeCompare(b.data.name))
+  .slice(0, 6)
+
+// Get contacts
+const contactCollection = await getCollection('contacts')
+---
+
+<Layout title={`${profile.name} | Frontend Architect`}>
+  <div class="container mx-auto px-4 py-8 max-w-5xl">
+    <!-- Hero Section -->
+    <div class="flex flex-col md:flex-row gap-8 items-center mb-16">
+      <div class="flex-1 space-y-6">
+        <div
+          class="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 text-primary rounded-full text-sm font-medium"
+        >
+          <span>Frontend Architect</span>
+        </div>
+
+        <h1 class="text-5xl md:text-6xl font-bold tracking-tight text-foreground">
+          Hi, I'm {profile.name}
+        </h1>
+
+        <p class="text-lg text-muted-foreground text-pretty">
+          Currently working as a {profile.currentJob.title} at {profile.currentJob.company}. I specialize in frontend
+          architecture with a focus on modern JavaScript frameworks and performance optimization.
+        </p>
+
+        <div class="flex gap-3 mt-4">
+          {
+            contactCollection.map((contact) => (
+              <a
+                href={contact.data.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-muted-foreground hover:text-foreground transition-colors"
+                aria-label={contact.data.name}
+              >
+                {contact.data.simpleIcon && <SimpleIcon slug={contact.data.simpleIcon} class="w-6 h-6" />}
+                {contact.data.logo && (
+                  <Image src={contact.data.logo} alt={contact.data.name} width={24} height={24} class="w-6 h-6" />
+                )}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="flex-shrink-0">
+        <Image
+          src={profilePic}
+          alt={profile.name}
+          width={320}
+          height={320}
+          class="rounded-full aspect-square object-cover border-4 border-primary/10 shadow-lg w-[280px] h-[280px]"
+          loading="eager"
+        />
+      </div>
+    </div>
+
+    <!-- Tech Stack Section -->
+    <div class="mb-16">
+      <div class="flex items-center gap-2 mb-6">
+        <RocketIcon class="h-6 w-6 text-primary" />
+        <h2 class="text-2xl font-bold">Core Tech Stack</h2>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        {
+          coreTech.map((tech) => (
+            <a href={`/tech/${tech.slug}`} class="group">
+              <div class="h-full p-4 rounded-lg border border-border bg-card hover:border-primary/50 hover:shadow-md transition-all flex flex-col items-center text-center">
+                {tech.data.simpleIcon && (
+                  <SimpleIcon
+                    slug={tech.data.simpleIcon}
+                    class="w-10 h-10 mb-3 text-muted-foreground group-hover:text-primary transition-colors"
+                  />
+                )}
+                <h3 class="font-medium text-foreground">{tech.data.name}</h3>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+
+      <div class="mt-4 flex justify-end">
+        <Button variant="outline" asChild size="sm">
+          <a href="/tech" class="flex items-center gap-2">
+            View all technologies
+            <ArrowRight class="h-4 w-4" />
+          </a>
+        </Button>
+      </div>
+    </div>
+
+    <!-- Recent Projects Section -->
+    <div class="mb-16">
+      <div class="flex items-center gap-2 mb-6">
+        <BriefcaseIcon class="h-6 w-6 text-primary" />
+        <h2 class="text-2xl font-bold">Recent Projects</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {
+          latestProjects.map((project) => (
+            <div class="h-full rounded-lg border border-border bg-card text-card-foreground shadow-sm transition-all hover:shadow-md hover:-translate-y-1 flex flex-col overflow-hidden p-4">
+              <div class="mb-3 flex items-center justify-between">
+                <h3 class="text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
+                  {project.data.title}
+                </h3>
+                {project.data.projectLink && (
+                  <a
+                    href={project.data.projectLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-muted-foreground hover:text-primary"
+                  >
+                    <ArrowRight class="h-4 w-4" />
+                  </a>
+                )}
+              </div>
+              <div class="space-y-3 mt-auto">
+                <div class="flex items-center gap-2">
+                  <CalendarIcon class="h-4 w-4 text-muted-foreground" />
+                  <span class="text-sm text-muted-foreground">
+                    {new Date(project.data.start).toLocaleDateString('en-US', {
+                      year: 'numeric',
+                      month: 'short',
+                    })}{' '}
+                    -{' '}
+                    {project.data.end
+                      ? new Date(project.data.end).toLocaleDateString('en-US', {
+                          year: 'numeric',
+                          month: 'short',
+                        })
+                      : 'Present'}
+                  </span>
+                </div>
+                {project.data.employer && <div class="text-sm text-muted-foreground">{project.data.employer}</div>}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="mt-4 flex justify-end">
+        <Button variant="outline" asChild size="sm">
+          <a href="/projects" class="flex items-center gap-2">
+            View all projects
+            <ArrowRight class="h-4 w-4" />
+          </a>
+        </Button>
+      </div>
+    </div>
+
+    <!-- Recent Talks Section -->
+    <div class="mb-16">
+      <div class="flex items-center gap-2 mb-6">
+        <MicIcon class="h-6 w-6 text-primary" />
+        <h2 class="text-2xl font-bold">Recent Talks</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {latestTalks.map((talk) => <TalkCard talk={talk} />)}
+      </div>
+
+      <div class="mt-4 flex justify-end">
+        <Button variant="outline" asChild size="sm">
+          <a href="/talks" class="flex items-center gap-2">
+            View all talks
+            <ArrowRight class="h-4 w-4" />
+          </a>
+        </Button>
+      </div>
+    </div>
+  </div>
+</Layout>

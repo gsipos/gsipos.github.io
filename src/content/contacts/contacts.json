@@ -1,0 +1,14 @@
+[
+  {
+    "id": "github",
+    "name": "Github",
+    "simpleIcon": "github",
+    "url": "https://github.com/gsipos"
+  },
+  {
+    "id": "linkedin",
+    "name": "LinkedIn",
+    "logo": "../../assets/logos/linkedin-logo.png",
+    "url": "https://www.linkedin.com/in/gergelysipos/"
+  }
+]

@@ -1,0 +1,31 @@
+---
+import ThemeDetext from '@/components/ThemeDetext.astro'
+import PageFooter from '../components/organisms/PageFooter.astro'
+import PageHeader from '../components/organisms/PageHeader.astro'
+import '../styles/global.css'
+
+interface Props {
+  title?: string
+}
+
+const { title = 'Gergely Sipos' } = Astro.props
+---
+
+<html lang="en" class="antialiased">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/favicon_64.png" sizes="64x64" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="google-site-verification" content="3GZ6QSUbuxneK7SULFA64yO5PJg5DgzAMFSXmqDGatg" />
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen flex flex-col bg-background text-foreground">
+    <PageHeader />
+    <main class="flex-1 container mx-auto px-4 py-8">
+      <slot />
+    </main>
+    <PageFooter />
+    <ThemeDetext />
+  </body>
+</html>

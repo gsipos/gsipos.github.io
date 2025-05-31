@@ -1,0 +1,62 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import { Mic, Calendar, Award, Video, FileText } from '@lucide/astro'
+
+interface Props {
+  talk: CollectionEntry<'talks'>
+}
+
+const { talk } = Astro.props
+---
+
+<a href={`/talks/${talk.slug}`} class="block group">
+  <div
+    class="h-full rounded-lg border border-border bg-card text-card-foreground shadow-sm transition-all hover:shadow-md hover:-translate-y-1 flex flex-col overflow-hidden"
+  >
+    <div class="p-4 md:p-6 flex-1 flex flex-col">
+      <h3 class="text-xl font-semibold text-foreground mb-4 group-hover:text-primary transition-colors">
+        {talk.data.title}
+      </h3>
+      <div class="mt-auto space-y-3">
+        <div class="flex items-center gap-2">
+          <Award size={18} class="text-muted-foreground" />
+          <span class="font-medium text-foreground">{talk.data.event}</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <Calendar size={18} class="text-muted-foreground" />
+          <span class="text-sm text-muted-foreground">
+            {
+              new Date(talk.data.date).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              })
+            }
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="px-4 md:px-6 py-3 bg-muted/50 border-t border-border flex items-center justify-between">
+      <div class="flex flex-wrap gap-3">
+        {
+          talk.data.videoLink && (
+            <span class="inline-flex items-center text-xs px-3 py-1 rounded-full bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300">
+              <Video size={14} class="mr-1" />
+              Video
+            </span>
+          )
+        }
+        {
+          talk.data.slides && (
+            <span class="inline-flex items-center text-xs px-3 py-1 rounded-full bg-green-50 text-green-700 dark:bg-green-900/30 dark:text-green-300">
+              <FileText size={14} class="mr-1" />
+              Slides
+            </span>
+          )
+        }
+      </div>
+      <span class="text-xs text-muted-foreground/70 font-medium">View details →</span>
+    </div>
+  </div>
+</a>

@@ -1,0 +1,33 @@
+---
+import TalkCard from '@/components/organisms/TalkCard.astro'
+import Layout from '../../layouts/Layout.astro'
+import { Mic, Calendar, Award, Video, FileText } from '@lucide/astro'
+import { getCollection } from 'astro:content'
+
+// Get all talks sorted by date in descending order (newest first)
+const talks = await getCollection('talks')
+const sortedTalks = [...talks].sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+---
+
+<Layout title="Conference Talks & Presentations | Gergely Sipos">
+  <div class="container mx-auto px-4 py-8 max-w-7xl">
+    <div class="mb-12 max-w-3xl">
+      <div
+        class="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4"
+      >
+        <Mic size={16} />
+        <span>Public Speaking</span>
+      </div>
+
+      <h1 class="text-4xl md:text-5xl font-bold mb-4 text-foreground text-pretty">Conference Talks & Presentations</h1>
+      <p class="text-lg text-muted-foreground text-balance">
+        I enjoy sharing knowledge through talks and presentations at various events. Below you'll find my past speaking
+        engagements, complete with slides and video recordings when available.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+      {sortedTalks.map((talk) => <TalkCard talk={talk} />)}
+    </div>
+  </div>
+</Layout>

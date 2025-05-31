@@ -1,0 +1,29 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import TechCard from './TechCard.astro'
+
+interface Props {
+  header: string
+  subheader: string
+  tech: CollectionEntry<'tech'>[] | undefined
+}
+
+const { tech, header, subheader } = Astro.props
+---
+
+{
+  tech ? (
+    <section class="py-8">
+      <h1 class="text-4xl mb-4 flex flex-row gap-2 items-baseline">
+        <slot name="icon" />
+        {header}
+        </h1>
+      <p class="text-lg text-muted-foreground mb-8">{subheader}</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 my-8">
+        {(tech ?? []).map((t) => (
+          <TechCard name={t.data.name} description={t.data.description} slug={t.slug} simpleIcon={t.data.simpleIcon} link={t.data.link} />
+        ))}
+      </div>
+    </section>
+  ) : null
+}
