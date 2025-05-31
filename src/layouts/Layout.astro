@@ -1,30 +1,30 @@
 ---
-import ThemeDetext from "@/components/ThemeDetext.astro";
-import PageFooter from "../components/organisms/PageFooter.astro";
-import PageHeader from "../components/organisms/PageHeader.astro";
-import "../styles/global.css";
+import ThemeDetext from '@/components/ThemeDetext.astro'
+import PageFooter from '../components/organisms/PageFooter.astro'
+import PageHeader from '../components/organisms/PageHeader.astro'
+import '../styles/global.css'
 
 interface Props {
-	title?: string;
+  title?: string
 }
 
-const { title = "Gergely Sipos" } = Astro.props;
+const { title = 'Gergely Sipos' } = Astro.props
 ---
 
 <html lang="en" class="antialiased">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />		
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body class="min-h-screen flex flex-col bg-background text-foreground">
-        <PageHeader />
-		<main class="flex-1 container mx-auto px-4 py-8">
-			<slot />
-		</main>
-        <PageFooter />
-		<ThemeDetext />
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/favicon_64.png" sizes="64x64" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen flex flex-col bg-background text-foreground">
+    <PageHeader />
+    <main class="flex-1 container mx-auto px-4 py-8">
+      <slot />
+    </main>
+    <PageFooter />
+    <ThemeDetext />
+  </body>
 </html>
