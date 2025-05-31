@@ -6,6 +6,7 @@ import { getCollection } from 'astro:content'
 import { Image } from 'astro:assets'
 import profilePic from '../assets/profile-pic.jpg'
 import SimpleIcon from '../components/SimpleIcon.astro'
+import TalkCard from '@/components/organisms/TalkCard.astro'
 
 // Get profile data
 const profileData = await getCollection('profile')
@@ -189,27 +190,7 @@ const contactCollection = await getCollection('contacts')
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {
-          latestTalks.map((talk) => (
-            <a href={`/talks/${talk.slug}`} class="block group">
-              <div class="h-full rounded-lg border border-border bg-card text-card-foreground shadow-sm transition-all hover:shadow-md hover:-translate-y-1 flex flex-col overflow-hidden p-4">
-                <h3 class="text-xl font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
-                  {talk.data.title}
-                </h3>
-                <div class="mt-auto space-y-2">
-                  <div class="text-sm font-medium text-foreground">{talk.data.event}</div>
-                  <div class="text-sm text-muted-foreground">
-                    {new Date(talk.data.date).toLocaleDateString('en-US', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric',
-                    })}
-                  </div>
-                </div>
-              </div>
-            </a>
-          ))
-        }
+        {latestTalks.map((talk) => <TalkCard talk={talk} />)}
       </div>
 
       <div class="mt-4 flex justify-end">
@@ -221,70 +202,5 @@ const contactCollection = await getCollection('contacts')
         </Button>
       </div>
     </div>
-
-    <!-- Blog Posts Teaser -->
-    <div class="mb-16">
-      <div class="flex items-center gap-2 mb-6">
-        <FileTextIcon class="h-6 w-6 text-primary" />
-        <h2 class="text-2xl font-bold">Writing & Content</h2>
-      </div>
-
-      <div class="bg-muted/30 border border-border rounded-lg p-6 text-center">
-        <p class="text-lg text-muted-foreground mb-4">
-          I occasionally write about web development, frontend architecture, and technologies I'm passionate about.
-        </p>
-        <Button asChild>
-          <a
-            href="https://medium.com/@doctusoft"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex items-center gap-2"
-          >
-            Read on Medium
-            <ArrowRight class="h-4 w-4" />
-          </a>
-        </Button>
-      </div>
-    </div>
-
-    <!-- Main Navigation -->
-    <nav class="mt-12 bg-muted/30 rounded-lg p-6 border border-border">
-      <h2 class="text-xl font-semibold mb-4">Explore More</h2>
-      <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        <li>
-          <Button asChild variant="outline" size="lg" className="w-full justify-start">
-            <a href="/tech" class="flex items-center gap-3">
-              <RocketIcon class="h-5 w-5" />
-              <div class="text-left">
-                <div class="font-medium">Technologies</div>
-                <div class="text-xs text-muted-foreground">Explore my tech stack</div>
-              </div>
-            </a>
-          </Button>
-        </li>
-        <li>
-          <Button asChild variant="outline" size="lg" className="w-full justify-start">
-            <a href="/projects" class="flex items-center gap-3">
-              <BriefcaseIcon class="h-5 w-5" />
-              <div class="text-left">
-                <div class="font-medium">Projects</div>
-                <div class="text-xs text-muted-foreground">Professional work projects</div>
-              </div>
-            </a>
-          </Button>
-        </li>
-        <li>
-          <Button asChild variant="outline" size="lg" className="w-full justify-start">
-            <a href="/talks" class="flex items-center gap-3">
-              <MicIcon class="h-5 w-5" />
-              <div class="text-left">
-                <div class="font-medium">Talks & Presentations</div>
-                <div class="text-xs text-muted-foreground">Conference talks and slides</div>
-              </div>
-            </a>
-          </Button>
-        </li>
-      </ul>
-    </nav>
   </div>
 </Layout>
