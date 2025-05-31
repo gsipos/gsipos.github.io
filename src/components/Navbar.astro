@@ -1,5 +1,5 @@
 ---
-import { Home, Code, FileText, Mic, Briefcase } from '@lucide/astro'
+import { Home, Code, Mic, Briefcase, Menu, X } from '@lucide/astro'
 import { ModeToggle } from './ModeToggle'
 import profilePic from '../assets/profile-pic.jpg'
 import { Image } from 'astro:assets'
@@ -7,42 +7,127 @@ import NavbarItem from './molecules/NavbarItem.astro'
 ---
 
 <nav class="bg-background border-b border-border sticky top-0 z-40">
-  <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-    <a
-      href="/"
-      class="text-xl font-bold text-primary hover:text-primary/90 transition-colors flex flex-row gap-3 items-center"
-    >
-      <Image
-        src={profilePic}
-        height={40}
-        width={40}
-        loading="eager"
-        class="rounded-full w-8 h-8 aspect-square object-cover"
-        alt="Gergely Sipos"
-      />
-      <h2>Gergely Sipos</h2>
-    </a>
+  <div class="container mx-auto px-4 py-3">
+    <div class="flex justify-between items-center">
+      <!-- Logo and brand -->
+      <a
+        href="/"
+        class="text-xl font-bold text-primary hover:text-primary/90 transition-colors flex flex-row gap-3 items-center"
+      >
+        <Image
+          src={profilePic}
+          height={40}
+          width={40}
+          loading="eager"
+          class="rounded-full w-8 h-8 aspect-square object-cover"
+          alt="Gergely Sipos"
+        />
+        <h2 class="hidden sm:block">Gergely Sipos</h2>
+      </a>
 
-    <ul class="flex items-center gap-6">
-      <NavbarItem href="/">
-        <Home size={16} slot="icon" />
-        Home
-      </NavbarItem>
-      <NavbarItem href="/tech">
-        <Code size={16} slot="icon" />
-        Technologies
-      </NavbarItem>
-      <NavbarItem href="/projects">
-        <Briefcase size={16} slot="icon" />
-        Projects
-      </NavbarItem>
-      <NavbarItem href="/talks">
-        <Mic size={16} slot="icon" />
-        Talks
-      </NavbarItem>
-      <li>
+      <!-- Desktop navigation -->
+      <ul class="hidden md:flex items-center gap-6">
+        <NavbarItem href="/">
+          <Home size={16} slot="icon" />
+          Home
+        </NavbarItem>
+        <NavbarItem href="/tech">
+          <Code size={16} slot="icon" />
+          Technologies
+        </NavbarItem>
+        <NavbarItem href="/projects">
+          <Briefcase size={16} slot="icon" />
+          Projects
+        </NavbarItem>
+        <NavbarItem href="/talks">
+          <Mic size={16} slot="icon" />
+          Talks
+        </NavbarItem>
+        <li>
+          <ModeToggle client:load />
+        </li>
+      </ul>
+
+      <!-- Mobile menu button and theme toggle -->
+      <div class="flex items-center gap-2 md:hidden">
         <ModeToggle client:load />
-      </li>
-    </ul>
+        <button
+          id="mobile-menu-button"
+          class="p-2 text-foreground hover:text-primary transition-colors"
+          aria-label="Toggle mobile menu"
+        >
+          <Menu id="menu-icon" size={20} />
+          <X id="close-icon" size={20} class="hidden" />
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile navigation menu -->
+    <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+      <ul class="flex flex-col gap-2">
+        <li>
+          <NavbarItem href="/" class="w-full justify-center">
+            <Home size={16} slot="icon" />
+            Home
+          </NavbarItem>
+        </li>
+        <li>
+          <NavbarItem href="/tech" class="w-full justify-center">
+            <Code size={16} slot="icon" />
+            Technologies
+          </NavbarItem>
+        </li>
+        <li>
+          <NavbarItem href="/projects" class="w-full justify-center">
+            <Briefcase size={16} slot="icon" />
+            Projects
+          </NavbarItem>
+        </li>
+        <li>
+          <NavbarItem href="/talks" class="w-full justify-center">
+            <Mic size={16} slot="icon" />
+            Talks
+          </NavbarItem>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>
+
+<script>
+  // Mobile menu toggle functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    const closeIcon = document.getElementById('close-icon');
+
+    if (mobileMenuButton && mobileMenu && menuIcon && closeIcon) {
+      mobileMenuButton.addEventListener('click', () => {
+        const isOpen = !mobileMenu.classList.contains('hidden');
+        
+        if (isOpen) {
+          // Close menu
+          mobileMenu.classList.add('hidden');
+          menuIcon.classList.remove('hidden');
+          closeIcon.classList.add('hidden');
+        } else {
+          // Open menu
+          mobileMenu.classList.remove('hidden');
+          menuIcon.classList.add('hidden');
+          closeIcon.classList.remove('hidden');
+        }
+      });
+
+      // Close mobile menu when clicking on a link
+      const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+      mobileMenuLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          menuIcon.classList.remove('hidden');
+          closeIcon.classList.add('hidden');
+        });
+      });
+    }
+  });
+</script>
