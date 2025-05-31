@@ -6,6 +6,8 @@ customerName: SIX Group Ltd.
 customerLink: https://www.six-group.com/en/home.html
 projectLink: https://www.youtube.com/watch?v=E94bISPHWdA&ab_channel=SIX
 employer: Aliz
+tech:
+- java
 ---
 
 Deal Pool is an electronic platform provided by SIX for the Swiss Franc fixed income primary market in Switzerland. 

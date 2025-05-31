@@ -1,5 +1,5 @@
 import { file } from 'astro/loaders'
-import { defineCollection, z } from 'astro:content'
+import { defineCollection, reference, z } from 'astro:content'
 
 const profile = defineCollection({
   type: 'data',
@@ -65,6 +65,7 @@ const workProjects = defineCollection({
     customerName: z.string().optional(),
     customerLink: z.string().optional(),
     employer: z.string().optional(),
+    tech: z.array(reference('tech')).optional() 
   }),
 })
 
