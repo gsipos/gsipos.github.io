@@ -4,7 +4,7 @@ start: 2012-09-01
 end: 2013-08-01
 employer: Aliz
 tech:
-- java
+  - java
 ---
 
 Custom development of a robust IT system for supporting the complete life-cycle of a manufacturing process.

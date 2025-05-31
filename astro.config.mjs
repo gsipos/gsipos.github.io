@@ -14,7 +14,7 @@ export default defineConfig({
   },
 
   image: {
-    remotePatterns: [{ protocol: "https" }],
+    remotePatterns: [{ protocol: 'https' }],
   },
 
   integrations: [react()],

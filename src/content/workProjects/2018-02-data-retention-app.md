@@ -6,11 +6,11 @@ employer: Aliz
 customerName: Neste
 customerLink: https://www.neste.com/
 tech:
-- react
-- typescript
-- mui
-- google-app-engine
-- rxjs
+  - react
+  - typescript
+  - mui
+  - google-app-engine
+  - rxjs
 ---
 
 Frontend for a Data Retention App that archives data on Google Team Drive folders.

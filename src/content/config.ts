@@ -19,7 +19,7 @@ const tech = defineCollection({
     name: z.string(),
     description: z.string().optional(),
     simpleIcon: z.string().optional(),
-    stack: z.enum(['core','active', 'recent', 'notRecent', 'legacy']).optional(),
+    stack: z.enum(['core', 'active', 'recent', 'notRecent', 'legacy']).optional(),
     link: z.string().optional(),
   }),
 })
@@ -65,7 +65,7 @@ const workProjects = defineCollection({
     customerName: z.string().optional(),
     customerLink: z.string().optional(),
     employer: z.string().optional(),
-    tech: z.array(reference('tech')).optional() 
+    tech: z.array(reference('tech')).optional(),
   }),
 })
 

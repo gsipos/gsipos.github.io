@@ -6,8 +6,9 @@ employer: Aliz
 customerName: Carussel
 customerLink: https://www.carussel.com/
 tech:
-- typescript
-- angular
-- google-app-engine
+  - typescript
+  - angular
+  - google-app-engine
 ---
+
 Automatic AdWords as generation for car dealership websites.
