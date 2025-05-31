@@ -132,6 +132,7 @@ const tech = project.data.tech ? await getEntries(project.data.tech) : []
               class="block relative group/preview"
             >
               <LinkPreviewImage
+                name={`project-${project.slug}`}
                 url={project.data.projectLink}
                 class="aspect-video object-cover w-full transition-transform duration-500 group-hover/preview:scale-105"
               />
@@ -156,6 +157,7 @@ const tech = project.data.tech ? await getEntries(project.data.tech) : []
               class="block relative group/preview"
             >
               <LinkPreviewImage
+                name={`project-customer-${project.slug}`}
                 url={project.data.customerLink}
                 class="aspect-video object-cover w-full transition-transform duration-500 group-hover/preview:scale-105"
               />

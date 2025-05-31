@@ -7,19 +7,20 @@ import { Image } from 'astro:assets'
 
 
 interface Props {
+  name: string
   url: string
   class?: string
 }
 
-const { url, class: className } = Astro.props
+const { url, class: className, name } = Astro.props
 
 const meta = await parseOpenGraph(url)
-const preloadedImage = meta?.image ? await preloadImage(meta.image) : ''
+const preloadedImage = meta?.image ? await preloadImage(name, meta.image) : ''
 
 ---
 
 {
-  meta?.image ? (
+  preloadedImage ? (
     <Image
       src={preloadedImage || ''}
       alt={meta?.imageAlt || ''}
