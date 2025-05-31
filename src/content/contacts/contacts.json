@@ -1,11 +1,5 @@
 [
   {
-    "id": "stackoverflow",
-    "name": "Stackoverflow",
-    "simpleIcon": "stackoverflow",
-    "url": "https://stackoverflow.com/users/6922682/gergely-sipos"
-  },
-  {
     "id": "github",
     "name": "Github",
     "simpleIcon": "github",
