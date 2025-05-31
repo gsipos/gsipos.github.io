@@ -77,7 +77,7 @@ const { Content } = await entry.render()
         </div>
       </header>
 
-      {entry.data.link && <LinkPreviewImage url={entry.data.link} class="aspect-[16/9] object-cover" />}
+      {entry.data.link && <LinkPreviewImage name={`tech-${entry.slug}`} url={entry.data.link} class="aspect-[16/9] object-cover" />}
 
       <section class="prose prose-lg max-w-none dark:prose-invert prose-headings:text-foreground prose-a:text-primary">
         <Content />
