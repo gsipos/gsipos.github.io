@@ -29,7 +29,7 @@
     "react-dom": "^19.1.0",
     "simple-icons": "^15.10.0",
     "tailwind-merge": "^3.3.0",
-    "tailwindcss": "^4.1.11"
+    "tailwindcss": "^4.1.12"
   },
   "devDependencies": {
     "prettier": "^3.5.3",
